@@ -1,0 +1,58 @@
+#cmb2-metabox-ingredients {
+	
+	& .cmb-remove-field-row {
+		//clear: both;
+
+		& .cmb-remove-group-row {
+			display: none;
+		}
+	}
+
+	& .cmb-repeatable-group .cmb-shift-rows {
+		font-size: .5em;
+		margin-right: 1px;
+
+		&.move-up .dashicons,
+		&.move-down .dashicons {
+			line-height: 2.5;
+		}
+	}
+
+	.cmb-type-group .cmb-row, .postbox-container .cmb-row {
+		padding-bottom: 0;
+		margin-bottom: 0.5rem;
+	}
+
+
+	& .ingred {
+		width: 20%;
+		float: left;
+		border-spacing: border-box;
+		padding: 0 .5rem .5rem 0;
+		border-bottom: none;
+
+		& .cmb-td,
+		& .cmb-th,
+		& .cmb-th+.cmb-td {
+			float: none;
+			width: 100%;
+		}
+
+		& .cmb2-metabox-description{
+			display: none;
+		}
+	}
+
+	& .ingred_amount {
+		width: 3rem;
+
+		input[type="number"]{
+			width: 3rem;
+		}
+	}
+
+	.cmb2-wrap & .cmb-row.cmb-repeat .cmb2-metabox-description {
+		padding-bottom: 0;
+	}
+
+}

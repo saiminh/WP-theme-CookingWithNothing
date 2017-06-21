@@ -1,0 +1,29 @@
+#cmb2-metabox-ingredients .cmb-remove-field-row .cmb-remove-group-row {
+  display: none; }
+#cmb2-metabox-ingredients .cmb-repeatable-group .cmb-shift-rows {
+  font-size: .5em;
+  margin-right: 1px; }
+  #cmb2-metabox-ingredients .cmb-repeatable-group .cmb-shift-rows.move-up .dashicons, #cmb2-metabox-ingredients .cmb-repeatable-group .cmb-shift-rows.move-down .dashicons {
+    line-height: 2.5; }
+#cmb2-metabox-ingredients .cmb-type-group .cmb-row, #cmb2-metabox-ingredients .postbox-container .cmb-row {
+  padding-bottom: 0;
+  margin-bottom: 0.5rem; }
+#cmb2-metabox-ingredients .ingred {
+  width: 20%;
+  float: left;
+  border-spacing: border-box;
+  padding: 0 .5rem .5rem 0;
+  border-bottom: none; }
+  #cmb2-metabox-ingredients .ingred .cmb-td, #cmb2-metabox-ingredients .ingred .cmb-th, #cmb2-metabox-ingredients .ingred .cmb-th + .cmb-td {
+    float: none;
+    width: 100%; }
+  #cmb2-metabox-ingredients .ingred .cmb2-metabox-description {
+    display: none; }
+#cmb2-metabox-ingredients .ingred_amount {
+  width: 3rem; }
+  #cmb2-metabox-ingredients .ingred_amount input[type="number"] {
+    width: 3rem; }
+.cmb2-wrap #cmb2-metabox-ingredients .cmb-row.cmb-repeat .cmb2-metabox-description {
+  padding-bottom: 0; }
+
+/*# sourceMappingURL=cmb2overrides.css.map */

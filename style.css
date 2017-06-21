@@ -1,0 +1,895 @@
+/*
+Theme Name: cookingwithnothing
+Theme URI: http://wordpress.org/themes/cookingwithnothing
+Author: TidyThemes
+Author URI: http://tidythemes.com/
+Description: <strong>UPDATE</strong> - 4.0+ is here, completely overhauled, yet again. As always, <a href="http://tidythemes.com/concept/#upgrading">use caution when upgrading</a> (tidythemes.com/concept/#upgrading) and <a href="http://tidythemes.com/concept/">learn the TidyThemes concept</a> (tidythemes.com/concept). &nbsp; &rarr; <em><strong>CAUTION</strong>: If you're child theming or have clients that are child theming on top of cookingwithnothing (not the recommended use), please do not blindly upgrade to newer versions.</em> &nbsp; &rarr; <strong>DESCRIPTION</strong>: cookingwithnothing is the definitive WordPress HTML5 boilerplate starter theme. We've carefully constructed the most clean and minimalist theme available anywhere for designers/developers to use as a base/foundation to build websites for clients or to build completely custom themes from scratch to release faster. Clean, semi-minified, unformatted and valid code, SEO-friendly, no programmer comments, standardized and as white label as possible and most importantly, CSS reset for cross-browser-compatability and no intrusive visual CSS styles added whatsoever. A perfect skeleton theme that blows any others like it (the subsequent underscores.me for example) completely out of the water, as they're simply too overcomplicated for what people really want in this kind of theme. Now comes with jQuery enqueued and ready to go. &nbsp; &rarr; <strong>SUPPORT</strong>: Please use the <a href="http://tidythemes.com/forum/">official support forum</a> (tidythemes.com/forum). Comments and suggestions for improving cookingwithnothing, please see "<a href="http://tidythemes.com/tidythemes-sucks/">TidyThemes Sucks!</a>" (tidythemes.com/tidythemes-sucks). Just getting started? <a href="http://tidythemes.com/want-to-learn-css/">Want to learn CSS?</a> (tidythemes.com/want-to-learn-css) &nbsp; &rarr; <strong>WHAT'S NEW?</strong>: We stripped down as much custom, extraneous, superfluous junk code as we could and greatly improved the HTML5 structure. <a href="http://make.wordpress.org/themes/author/chipbennett/">Chip Bennett</a> (make.wordpress.org/themes/author/chipbennett), a highly experienced programmer and official WordPress administrator, worked closely with us to audit the theme code for quality. <a href="http://themes.trac.wordpress.org/changeset?old_path=/cookingwithnothing/3.3&new_path=/cookingwithnothing/4.0">See</a> (themes.trac.wordpress.org/changeset?old_path=/cookingwithnothing/3.3&new_path=/cookingwithnothing/4.0) just how much we've revamped things. Last, but not least, cookingwithnothing has now been <a href="https://github.com/tidythemes/cookingwithnothing">opened up on GitHub</a> (github.com/tidythemes/cookingwithnothing) if anyone would like to make suggested code additions/improvements. Thank you for using cookingwithnothing.
+Version: 4.0.3
+License: GNU General Public License
+License URI: https://www.gnu.org/licenses/gpl.html
+Tags: black, blue, white, light, one-column, fluid-layout, responsive-layout, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready
+Text Domain: cookingwithnothing
+
+*/
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700");
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  font-size: 100%;
+  font: inherit;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  vertical-align: baseline; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+.clear {
+  clear: both; }
+
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important; }
+
+html, body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.58;
+  color: #D4776B; }
+  @media screen and (min-width: 1200px) {
+    html, body {
+      font-size: 22px; } }
+
+a,
+a:hover,
+a:visited {
+  color: #D4776B; }
+
+b, strong {
+  font-weight: 700; }
+
+i, em {
+  font-style: italic; }
+
+button,
+input[type="submit"] {
+  font-size: 1rem;
+  background: #F3E7E4;
+  padding: .5rem;
+  color: #D4776B;
+  border: 3px solid #D4776B;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+  overflow: auto;
+  margin-bottom: 1.5rem; }
+
+textarea {
+  font-size: 1rem;
+  background: #F3E7E4;
+  padding: .5rem;
+  color: #D4776B;
+  border: 3px solid #D4776B;
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: italic;
+  cursor: text;
+  display: block;
+  overflow: auto;
+  margin-bottom: 1.5rem;
+  width: 33%;
+  max-width: 45rem;
+  height: 3rem;
+  transition: all .3s ease-out; }
+  textarea:focus {
+    outline: none;
+    width: 100%;
+    height: 10rem;
+    border-width: 3px; }
+
+.comment-reply-title {
+  font-size: 1rem;
+  font-weight: bold;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 3px solid #D4776B; }
+
+.entry-content p {
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  		/* &:first-child:first-letter { 
+  			float: left;
+  		    font-size: 7.36rem;
+  		    font-weight: 500;
+  		    line-height: 4.54rem;
+  		    padding-top: 1.4rem;
+  		    padding-right: 8px;
+  		    padding-left: 0px; 
+  
+  		} */ }
+.entry-content a {
+  font-weight: bold;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #D4776B; }
+  .entry-content a:hover {
+    background-color: #D4776B;
+    color: #F3E7E4;
+    text-decoration: none; }
+
+.entry-title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem; }
+  .entry-title a {
+    text-decoration: none;
+    color: #D4776B; }
+
+.entry-meta {
+  font-size: 0.8rem;
+  padding-bottom: .25rem; }
+
+.svg-icon {
+  height: .75rem; }
+  .svg-icon * {
+    fill: #D4776B; }
+
+body {
+  background-color: #F3E7E4; }
+
+html, body * {
+  box-sizing: border-box; }
+
+#container {
+  padding: 0;
+  box-sizing: border-box;
+  clear: both; }
+  @media screen and (max-width: 767px) {
+    #container {
+      margin-top: 1rem; } }
+  @media screen and (min-width: 1400px) {
+    #container {
+      margin-left: 12rem;
+      padding: 0 2rem 2rem 2rem; } }
+
+#content {
+  position: relative; }
+
+#wrapper {
+  margin: 0 auto;
+  padding: 1rem; }
+  @media screen and (min-width: 768px) {
+    #wrapper {
+      padding: 2rem; } }
+
+.home .post {
+  margin: 0; }
+  @media screen and (min-width: 768px) {
+    .home .post {
+      width: 33.3%;
+      float: left;
+      box-sizing: border-box;
+      padding-left: 1.5rem;
+      position: relative;
+      left: -1.5rem; } }
+.home .attachment-post-thumbnail {
+  width: 100%;
+  height: auto; }
+
+.home_latestarticle {
+  margin-bottom: 2rem;
+  width: 100%;
+  overflow: auto; }
+
+.home_latestarticle_header {
+  text-align: right;
+  display: none; }
+
+.home_latestarticle_thumbnail {
+  box-sizing: border-box; }
+  @media screen and (min-width: 768px) {
+    .home_latestarticle_thumbnail {
+      width: 66.6%;
+      height: auto;
+      clear: both;
+      float: left;
+      padding-right: 1.5rem; } }
+  .home_latestarticle_thumbnail img {
+    background-color: #FFF; }
+
+.home_latestarticle_content {
+  position: relative; }
+  @media screen and (min-width: 768px) {
+    .home_latestarticle_content .entry-content_text {
+      float: left;
+      width: 33.3%; } }
+
+.home_latestarticle_tag {
+  background-color: #D4776B;
+  color: #F3E7E4;
+  display: inline-block;
+  text-align: center;
+  padding: 0.33rem 1rem;
+  font-size: 1.5rem;
+  height: 3rem;
+  min-width: 10rem;
+  -webkit-transform-origin: 100% 0;
+  -moz-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  -o-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  transform: rotate(270deg);
+  position: absolute;
+  right: calc(100% + 3rem);
+  top: 0px; }
+
+.home_latestrecipes_wrapper {
+  clear: both;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 3px solid #D4776B; }
+
+.home_latestrecipes_wrapper_header {
+  font-size: 1.75rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  margin-bottom: 1rem; }
+
+.entry-title_latestrecipes {
+  font-size: 1.33rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.33; }
+  .entry-title_latestrecipes a {
+    text-decoration: none; }
+
+.archive .post {
+  margin: 0 0 3.5rem 0; }
+  @media screen and (min-width: 768px) {
+    .archive .post {
+      width: 33.3%;
+      float: left;
+      box-sizing: border-box;
+      padding-left: 1.5rem;
+      position: relative;
+      left: -1.5rem; } }
+.archive .attachment-post-thumbnail {
+  width: 100%;
+  height: auto; }
+
+/* .thumbnail_category {
+	width: 50%;
+
+	& .attachment-post-thumbnail {
+		width: 100%;
+		height: auto;
+		border: 3px solid $text-color;
+	}
+} */
+#comments {
+  margin: 3rem 0;
+  clear: both; }
+
+#footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 3px solid #D4776B; }
+
+@media screen and (min-width: 1400px) {
+  #header {
+    position: fixed; } }
+
+#site-title a {
+  box-sizing: border-box;
+  display: block;
+  width: 10rem;
+  height: 3.5rem;
+  text-indent: -9999px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-image: url(theme_assets/CWN_logo.svg);
+  background-position: 0	0;
+  background-size: 100%;
+  background-repeat: no-repeat; }
+  @media screen and (min-width: 768px) {
+    #site-title a {
+      width: 12rem;
+      height: 4rem; } }
+
+#site-description {
+  text-align: center;
+  display: none; }
+
+.mobile-nav-toggle {
+  width: 30px;
+  position: absolute;
+  top: 2rem;
+  right: 1rem; }
+  @media screen and (min-width: 768px) {
+    .mobile-nav-toggle {
+      display: none; } }
+  .mobile-nav-toggle svg * {
+    fill: #D4776B; }
+  .mobile-nav-toggle .navTrigger {
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0; }
+  .mobile-nav-toggle .navTrigger i {
+    background-color: #D4776B;
+    border-radius: 2px;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px; }
+  .mobile-nav-toggle .navTrigger i:nth-child(1) {
+    -webkit-animation: outT 0.8s backwards;
+    animation: outT 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse; }
+  .mobile-nav-toggle .navTrigger i:nth-child(2) {
+    margin: 5px 0;
+    -webkit-animation: outM 0.8s backwards;
+    animation: outM 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse; }
+  .mobile-nav-toggle .navTrigger i:nth-child(3) {
+    -webkit-animation: outBtm 0.8s backwards;
+    animation: outBtm 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse; }
+  .mobile-nav-toggle .navTrigger.active i:nth-child(1) {
+    -webkit-animation: inT 0.8s forwards;
+    animation: inT 0.8s forwards; }
+  .mobile-nav-toggle .navTrigger.active i:nth-child(2) {
+    -webkit-animation: inM 0.8s forwards;
+    animation: inM 0.8s forwards; }
+  .mobile-nav-toggle .navTrigger.active i:nth-child(3) {
+    -webkit-animation: inBtm 0.8s forwards;
+    animation: inBtm 0.8s forwards; }
+@-webkit-keyframes inM {
+  50% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(45deg); } }
+@keyframes inM {
+  50% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(45deg); } }
+@-webkit-keyframes outM {
+  50% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(45deg); } }
+@keyframes outM {
+  50% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(45deg); } }
+@-webkit-keyframes inT {
+  0% {
+    -webkit-transform: translateY(0px) rotate(0deg); }
+  50% {
+    -webkit-transform: translateY(9px) rotate(0deg); }
+  100% {
+    -webkit-transform: translateY(9px) rotate(135deg); } }
+@keyframes inT {
+  0% {
+    transform: translateY(0px) rotate(0deg); }
+  50% {
+    transform: translateY(9px) rotate(0deg); }
+  100% {
+    transform: translateY(9px) rotate(135deg); } }
+@-webkit-keyframes outT {
+  0% {
+    -webkit-transform: translateY(0px) rotate(0deg); }
+  50% {
+    -webkit-transform: translateY(9px) rotate(0deg); }
+  100% {
+    -webkit-transform: translateY(9px) rotate(135deg); } }
+@keyframes outT {
+  0% {
+    transform: translateY(0px) rotate(0deg); }
+  50% {
+    transform: translateY(9px) rotate(0deg); }
+  100% {
+    transform: translateY(9px) rotate(135deg); } }
+@-webkit-keyframes inBtm {
+  0% {
+    -webkit-transform: translateY(0px) rotate(0deg); }
+  50% {
+    -webkit-transform: translateY(-9px) rotate(0deg); }
+  100% {
+    -webkit-transform: translateY(-9px) rotate(135deg); } }
+@keyframes inBtm {
+  0% {
+    transform: translateY(0px) rotate(0deg); }
+  50% {
+    transform: translateY(-9px) rotate(0deg); }
+  100% {
+    transform: translateY(-9px) rotate(135deg); } }
+@-webkit-keyframes outBtm {
+  0% {
+    -webkit-transform: translateY(0px) rotate(0deg); }
+  50% {
+    -webkit-transform: translateY(-9px) rotate(0deg); }
+  100% {
+    -webkit-transform: translateY(-9px) rotate(135deg); } }
+@keyframes outBtm {
+  0% {
+    transform: translateY(0px) rotate(0deg); }
+  50% {
+    transform: translateY(-9px) rotate(0deg); }
+  100% {
+    transform: translateY(-9px) rotate(135deg); } }
+#menu {
+  position: relative; }
+  @media screen and (max-width: 767px) {
+    #menu {
+      background-color: #F3E7E4;
+      position: fixed;
+      top: 4rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      padding: 1rem;
+      transform: translateX(100%);
+      transition: transform .2s linear; }
+      body.menu-active #menu {
+        transform: translateX(0);
+        transition: transform .2s linear; } }
+  @media screen and (min-width: 768px) {
+    #menu {
+      top: -48px;
+      margin-left: 14rem; } }
+  @media screen and (min-width: 1400px) {
+    #menu {
+      top: inherit;
+      margin-left: 0;
+      margin-top: 1rem;
+      position: absolute;
+      width: 12rem; } }
+
+@media screen and (min-width: 768px) {
+  #menu-cwn_main_menu {
+    border-bottom: 3px solid #D4776B;
+    padding-left: 0rem;
+    height: 2.25rem; } }
+@media screen and (min-width: 1400px) {
+  #menu-cwn_main_menu {
+    border-bottom: 0;
+    height: auto; } }
+#menu-cwn_main_menu .menu-item {
+  display: block; }
+#menu-cwn_main_menu .menu-item > a {
+  text-decoration: none;
+  background-color: #F3E7E4;
+  position: relative;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  line-height: 1rem;
+  background-color: #F3E7E4;
+  display: block;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #D4776B; }
+  @media screen and (min-width: 768px) {
+    #menu-cwn_main_menu .menu-item > a {
+      float: left;
+      display: inherit;
+      margin-right: 3px;
+      position: relative;
+      font-size: .85rem;
+      height: 2.25rem;
+      line-height: .75rem;
+      padding: .5rem 1.5rem;
+      border-bottom: 3px solid #D4776B; } }
+  @media screen and (min-width: 1200px) {
+    #menu-cwn_main_menu .menu-item > a {
+      font-size: 0.81rem; } }
+  @media screen and (min-width: 1400px) {
+    #menu-cwn_main_menu .menu-item > a {
+      float: none;
+      display: block;
+      line-height: 1rem;
+      border-bottom: 1px solid #D4776B;
+      padding: .5rem 0; } }
+#menu-cwn_main_menu .current-menu-item > a, #menu-cwn_main_menu .current-menu-parent > a {
+  font-weight: 600;
+  line-height: 1.2rem; }
+  @media screen and (min-width: 768px) {
+    #menu-cwn_main_menu .current-menu-item > a, #menu-cwn_main_menu .current-menu-parent > a {
+      border: 3px solid #D4776B;
+      border-bottom: none;
+      font-weight: 600;
+      line-height: 1.2rem;
+      top: -3px;
+      height: calc(2.25rem + 3px); } }
+  @media screen and (min-width: 1400px) {
+    #menu-cwn_main_menu .current-menu-item > a, #menu-cwn_main_menu .current-menu-parent > a {
+      border: none;
+      border-bottom: 3px solid #D4776B;
+      top: 0;
+      line-height: 1rem;
+      height: 2.25rem; } }
+
+#search {
+  font-size: 1rem;
+  margin-top: 1rem; }
+  @media screen and (min-width: 768px) {
+    #search {
+      position: absolute;
+      bottom: 5px;
+      right: 0;
+      font-size: 0.85rem; } }
+  @media screen and (min-width: 1400px) {
+    #search {
+      position: relative;
+      font-size: 0.81rem; } }
+
+.single-post #container {
+  padding: 0; }
+  @media screen and (min-width: 1400px) {
+    .single-post #container {
+      padding-left: 2rem; } }
+@media screen and (min-width: 769px) {
+  .single-post .article_content {
+    column-count: 2;
+    column-gap: 2rem;
+    width: 100%; } }
+@media screen and (min-width: 102rem) {
+  .single-post .article_content {
+    column-count: 3;
+    column-gap: 2rem; } }
+.single-post .article_content p:first-child:first-letter {
+  float: left;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 3.7rem;
+  font-weight: 700;
+  line-height: 3rem;
+  padding-top: 0px;
+  padding-right: 8px;
+  padding-left: 3px; }
+.single-post .entry-title {
+  margin-top: 0;
+  -webkit-column-span: all;
+  -moz-column-span: all; }
+
+.thumbnail_single {
+  width: 100%;
+  margin-bottom: 1.5rem; }
+  .thumbnail_single .attachment-post-thumbnail {
+    width: 100%;
+    height: auto;
+    display: block; }
+  @media screen and (min-width: 768px) {
+    .thumbnail_single {
+      margin: 0 0 2rem 0;
+      padding: 0; } }
+
+@media screen and (min-width: 769px) {
+  .post-template-recipe-post .article_content {
+    column-count: 1;
+    column-gap: 0;
+    width: calc(50% - 1rem);
+    float: left;
+    margin-right: 1rem;
+    box-sizing: border-box; } }
+@media screen and (min-width: 102rem) {
+  .post-template-recipe-post .article_content {
+    column-count: 1; } }
+@media screen and (min-width: 1600px) {
+  .post-template-recipe-post .article_content {
+    width: calc(33.3% - 1rem); } }
+.post-template-recipe-post .recipe_thumbnail {
+  width: calc(100% + 2rem);
+  height: auto;
+  max-height: 45vh;
+  margin: -1rem -1rem 1rem -1rem;
+  overflow: hidden; }
+  .post-template-recipe-post .recipe_thumbnail .attachment-post-thumbnail {
+    width: 100%;
+    height: auto; }
+@media screen and (min-width: 769px) {
+  .post-template-recipe-post .recipe {
+    border: 3px solid #D4776B;
+    width: calc(50% - 1rem);
+    margin-left: 1rem;
+    box-sizing: border-box;
+    float: left;
+    padding: 1rem; } }
+@media screen and (min-width: 1600px) {
+  .post-template-recipe-post .recipe {
+    width: calc(66.6% - 1rem); } }
+.post-template-recipe-post .recipe_component_name {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: .5rem;
+  clear: both; }
+.post-template-recipe-post .recipe > .recipe_component ~ .recipe_component .recipe_component_name {
+  border-top: 3px solid #D4776B;
+  margin: 0 -1rem .5rem -1rem;
+  padding: .5rem 1rem 0 1rem; }
+.post-template-recipe-post .recipe_component_header {
+  font-style: italic;
+  margin-bottom: .5rem; }
+.post-template-recipe-post .recipe_component_ingredients {
+  margin-bottom: 1rem; }
+  @media screen and (min-width: 1600px) {
+    .post-template-recipe-post .recipe_component_ingredients {
+      width: calc(50% - 1rem);
+      float: left;
+      margin-right: 1rem; } }
+  .post-template-recipe-post .recipe_component_ingredients ul {
+    list-style: square;
+    margin: 0 0 .5rem 1rem; }
+.post-template-recipe-post .recipe_component_steps {
+  margin-bottom: 1rem; }
+  @media screen and (min-width: 1600px) {
+    .post-template-recipe-post .recipe_component_steps {
+      width: calc(50% - 1rem);
+      float: left;
+      margin: 0 0 .5rem 1rem; } }
+  .post-template-recipe-post .recipe_component_steps ol {
+    list-style: decimal;
+    margin-left: 1rem; }
+    .post-template-recipe-post .recipe_component_steps ol li {
+      border-top: 1px solid #f1d2ce;
+      padding-top: .5rem;
+      margin-bottom: .5rem; }
+
+.close-cookmode {
+  display: none; }
+
+.cookmode-on .close-cookmode {
+  display: inline-block;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+  font-style: italic;
+  cursor: pointer; }
+  .cookmode-on .close-cookmode .closex {
+    margin-left: 1em;
+    height: 1rem;
+    position: relative;
+    top: 0.125rem; }
+.cookmode-on .recipe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  overflow: scroll;
+  width: 100%;
+  box-sizing: border-box;
+  background: #F3E7E4;
+  padding: 2rem; }
+  .cookmode-on .recipe .attachment-post-thumbnail {
+    display: none; }
+@media screen and (min-width: 768px) {
+  .cookmode-on .recipe_component_ingredients {
+    width: calc(50% - 1rem);
+    float: left;
+    margin-right: 1rem; } }
+@media screen and (min-width: 768px) {
+  .cookmode-on .recipe_component_steps {
+    width: calc(50% - 1rem);
+    float: left;
+    margin-left: 1rem; } }
+.cookmode-on .recipe_component_steps li:hover {
+  background: #D4776B;
+  color: #F3E7E4;
+  list-style-position: inside;
+  margin-left: -1rem;
+  padding: 1rem; }
+
+/** General Search CSS **/
+#search {
+  padding: 2px 0; }
+
+#searchform label {
+  height: 28px;
+  width: 28px;
+  display: inline-block; }
+  #searchform label .si-glyph g {
+    fill: #D4776B; }
+
+.search-submit {
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: transparent;
+  display: none; }
+  .search-submit .si-glyph g {
+    fill: #D4776B; }
+
+#s {
+  border: 0px dashed #D4776B;
+  background: transparent;
+  width: 1px;
+  height: 1rem;
+  display: inline-block;
+  transition: width .2s, padding .2s;
+  color: #D4776B;
+  font-size: 1em;
+  font-family: 'Source Sans Pro', sans-serif;
+  position: relative;
+  top: -5px; }
+  #s::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #D4776B;
+    font-size: 1em;
+    font-family: 'Source Sans Pro', sans-serif; }
+  #s *::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #D4776B;
+    font-size: 1em;
+    font-family: 'Source Sans Pro', sans-serif; }
+  #s:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #D4776B;
+    font-size: 1em;
+    font-family: 'Source Sans Pro', sans-serif; }
+  #s:-moz-placeholder {
+    /* Firefox 18- */
+    color: #D4776B;
+    font-size: 1em;
+    font-family: 'Source Sans Pro', sans-serif; }
+  #s:focus {
+    width: 140px;
+    outline: none;
+    padding: 0 .25rem; }
+
+/** Dave's WordPress Live Search CSS **/
+ul.search_results {
+  display: block;
+  background-color: #fff;
+  width: 250px;
+  max-height: 500px;
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  overflow: auto;
+  z-index: 9999;
+  list-style-type: none;
+  list-style-image: none;
+  list-style-position: inside;
+  padding: 0px;
+  margin: 0px;
+  -moz-box-shadow: 5px 5px 3px #222;
+  -webkit-box-shadow: 5px 5px 3px #222;
+  box-shadow: 5px 5px 3px #222; }
+
+ul.search_results li {
+  display: block;
+  padding: 5px 10px 5px 10px;
+  margin: 0px 0px 0px 0px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #aaa;
+  text-align: left;
+  color: #000;
+  background-color: #ddd;
+  text-decoration: none; }
+
+ul.search_results li:hover {
+  background-color: #fff; }
+
+ul.search_results li a, ul.search_results li a:visited {
+  display: block;
+  color: #000;
+  margin-left: 0px;
+  padding-left: 0px;
+  text-decoration: none;
+  font-weight: bold; }
+
+ul.search_results p#daves-wordpress-live-search_author {
+  margin: 0px;
+  font-size: 90%;
+  font-weight: bold; }
+
+ul.search_results p#daves-wordpress-live-search_date {
+  margin: 0px;
+  font-size: 90%; }
+
+/* BEGIN post thumbnails */
+ul.search_results li.post_with_thumb a {
+  width: 150px;
+  float: left;
+  margin-bottom: 5px; }
+
+ul.search_results li.post_with_thumb img.post_thumb {
+  float: left;
+  margin: 3px 10px 10px 0px;
+  height: 48px;
+  width: 48px;
+  border: 1px solid #888; }
+
+/* END post thumbnails */
+/* BEGIN post excerpt */
+ul.search_results .excerpt, ul.search_results .meta {
+  font-size: 75%;
+  width: 100%; }
+
+/* END post excerpt */
+ul.search_results .clearfix {
+  float: none !important;
+  clear: both !important; }
+
+.search_footer {
+  background-color: #888;
+  width: 100%;
+  text-align: right;
+  padding: .5em 0;
+  font-size: .9em; }
+
+.search_footer a,
+.search_footer a:visited {
+  color: #fff;
+  margin-right: 1em;
+  text-decoration: none; }
+
+#search_results_activity_indicator {
+  z-index: 999999; }
+
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  /* Many screen reader and browser combinations announce broken words as they would appear visually. */ }
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */ }
+
+/*# sourceMappingURL=style.css.map */
