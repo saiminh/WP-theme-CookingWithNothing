@@ -10,7 +10,7 @@
 	display: inline-block;
 
 	 & .si-glyph g {
-    	fill: $text-color;
+    	fill: $link-color;
     }
 }
 
@@ -22,12 +22,12 @@
     display: none;
 
     & .si-glyph g {
-    	fill: $text-color;
+    	fill: $link-color;
     }
 }
 
 #s {
-	border: 0px dashed $text-color;
+	border: 0px dashed $link-color;
 	background: transparent;
 	width: 1px;
 	height: 1rem;

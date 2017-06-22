@@ -10,7 +10,11 @@ get_header(); ?>
 	<?php // get_template_part( 'entry' ); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+	<?php 
+		echo '<div class="thumbnail_single">';
+		the_post_thumbnail(); 
+		echo '</div>';
+	?>
 	<div class="article_content">
 		<?php
 			if ( !is_search() ) 
@@ -43,10 +47,7 @@ get_header(); ?>
 			</svg>
 
 		</a>
-		<?php
-			echo '<div class="recipe_thumbnail">';
-			the_post_thumbnail(); 
-			echo '</div>';
+		<?php			
 		// Grab the metadata from the database
 			$recipe_array = get_post_meta( get_the_ID(), 'recipe_component_data_group', true );
 			

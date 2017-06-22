@@ -2,15 +2,15 @@
 <header class="home_latestarticle_header">
  <?php edit_post_link(); ?> 
 </header>
+<div class="home_latestarticle_thumbnail">
+	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark">
+		<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+	</a>
+</div>
 <div class="home_latestarticle_content">
 	<!-- <div class="home_latestarticle_tag">
 		The Latest 
 	</div> -->
-	<div class="home_latestarticle_thumbnail">
-		<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark">
-			<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
-		</a>
-	</div>
 	<?php
 		get_template_part( 'entry', 'meta' ); 
 	?>

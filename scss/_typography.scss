@@ -6,8 +6,16 @@ html, body {
 	color: $text-color;
 
 	@media screen and (min-width: 1200px) {
+		font-size: 20px;
+	}
+
+	@media screen and (min-width: 1400px) {
 		font-size: 22px;
 	}
+}
+
+p, li {
+	-webkit-font-smoothing: antialiased;
 }
 
 a,
@@ -26,17 +34,18 @@ i, em {
 
 button,
 input[type="submit"] {
-	font-size: 1rem;
+	font-size: .9rem;
 	background: $bg-color;
-	padding: .5rem;
-	color: $text-color;
-	border: 3px solid $text-color;
-	font-family: $text-font;
-	font-weight: bold;
+	padding: .75rem 1rem;
+	color: $link-color;
+	border: 1px solid $link-color;
+	font-family: $headline-font;
 	cursor: pointer;
 	display: inline-block;
 	overflow: auto;
 	margin-bottom: 1.5rem;
+	text-transform: uppercase;
+	-webkit-font-smoothing: auto;
 }
 
 textarea {
@@ -64,14 +73,6 @@ textarea {
 	}
 }
 
-.comment-reply-title {
-	font-size: 1rem;
-	font-weight: bold;
-	padding-top: 1rem;
-	margin-top: 1rem;
-	border-top: 3px solid $text-color;
-}
-
 .entry-content {
 
 	& p {
@@ -91,9 +92,9 @@ textarea {
 	}
 
 	& a {
-		font-weight: bold;
-		font-family: $headline-font;
-		color: $text-color;
+		//font-weight: bold;
+		//font-family: $headline-font;
+		color: $link-color;
 
 		&:hover {
 			background-color: $text-color;
@@ -106,16 +107,42 @@ textarea {
 
 .entry-title {
 	font-family: $headline-font;
-	font-size: 1.75rem;
-	font-weight: 700;
-	line-height: 1.2;
+	font-size: 1.5rem;
+	font-weight: 300;
+	line-height: 1.33;
 	margin-bottom: 1rem;
-    //letter-spacing: .03rem;
+	text-transform: uppercase;
+    letter-spacing: .05rem;
+    //-webkit-font-smoothing: antialiased;
 
 	& a{
 		text-decoration: none;
-		color: $text-color;
+		color: $link-color;
 	}
+}
+
+.home_latestrecipes_wrapper_header{
+	@extend .entry-title;
+}
+
+.entry-title_latestrecipes {
+	//@extend .entry-title;
+	font-size: 1.125rem;
+	margin-bottom: .75rem;
+	margin-top: .25rem;
+
+	& a {
+		text-decoration: none;
+	}
+}
+
+.comment-reply-title {
+	@extend .entry-title;
+	font-size: 1rem;
+	font-weight: bold;
+	padding-top: 1rem;
+	margin-top: 1rem;
+	border-top: 1px solid $special-color;
 }
 
 .entry-meta {

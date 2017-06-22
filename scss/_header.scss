@@ -1,15 +1,37 @@
 #header {
 
+	background: $special-color;
+	margin: -1rem -1rem 1rem -1rem;
+    padding: 1.5rem 1rem;
+
+    @media screen and (min-width: 768px) {
+    	margin: -2rem -2rem 2rem -2rem;
+	    padding: 1.5rem 2rem;
+	    height: 6rem;
+	    background: transparent;
+	    position: absolute;
+	    width: 100%;
+	    z-index: 3;
+    }
+
+    @media screen and (min-width: 1200px) {
+    	//margin: -36px -36px 36px -36px;
+    	padding-top: 27px;
+    	height: 108px;
+    }
+
 	@media screen and (min-width: 1400px) {
 		position: fixed;
+		height: auto;
+		padding: 1rem;
 	}
 }
 
 #site-title a {
 	box-sizing: border-box;
 	display: block;
-	width: 10rem;
-	height: 3.5rem;
+	width: 180px;
+	height: 54px;
 	text-indent: -9999px;
 	box-sizing: border-box;
 	overflow: hidden;
@@ -17,11 +39,6 @@
     background-position: 0	0;
     background-size: 100%;
     background-repeat: no-repeat;
-
-    @media screen and (min-width: 768px) {
-    	width: 12rem;
-    	height: 4rem;
-    }
 }
 
 #site-description {
@@ -37,11 +54,11 @@
 
 	width: 30px;
 	position: absolute;
-	top: 2rem;
+	top: 3rem;
 	right: 1rem;
 
 	svg *{
-		fill: $text-color;
+		fill: $link-color;
 	}
 
 	.navTrigger {
@@ -56,7 +73,7 @@
 	  bottom: 0;
 	}
 	.navTrigger i {
-	  background-color: $text-color;
+	  background-color: $link-color;
 	  border-radius: 2px;
 	  content: '';
 	  display: block;
@@ -223,7 +240,7 @@
 	@media screen and (max-width: 767px) {
 		background-color: #F3E7E4;
 	    position: fixed;
-	    top: 4rem;
+	    top: 5rem;
 	    left: 0;
 	    right: 0;
 	    bottom: 0;
@@ -240,7 +257,7 @@
 	}
 
 	@media screen and (min-width: 768px) { 
-		top: -48px;
+		top: -2.5rem;
 		margin-left: 14rem;
 	}
 
@@ -256,7 +273,7 @@
 #menu-cwn_main_menu {
 
 	@media screen and (min-width: 768px) {
-		border-bottom: 3px solid $text-color;
+		border-bottom: none;
 		padding-left: 0rem;
 		height: 2.25rem;
 	}
@@ -272,7 +289,6 @@
 
 	& .menu-item > a {		
 		text-decoration: none;
-		background-color: $bg-color;
 		position: relative;
 		font-family: $headline-font;
 		font-size: 1rem;
@@ -280,10 +296,10 @@
 		letter-spacing: 0.05em;		
 		text-decoration: none;
 		line-height: 1rem;
-		background-color: $bg-color;
 		display: block;
 		padding: 0.75rem 0;
-		border-bottom: 1px solid $text-color;
+		border-bottom: 1px solid $link-color;
+		-webkit-font-smoothing: auto;
 
 		@media screen and (min-width: 768px) {
 			float: left;
@@ -291,10 +307,9 @@
 			margin-right: 3px;
 			position: relative;						
 			font-size: .85rem;
-			height: 2.25rem;
 			line-height: .75rem;
 			padding: .5rem 1.5rem;
-			border-bottom: 3px solid $text-color;
+			border-bottom: none;
 		}
 
 		@media screen and (min-width: 1200px) {
@@ -304,8 +319,8 @@
 		@media screen and (min-width: 1400px) {
 			float: none;
 			display: block;
-			line-height: 1rem;
-			border-bottom: 1px solid $text-color;
+			line-height: 1.2rem;
+			border-bottom: 1px solid $special-color;
 			padding: .5rem 0;
 		}
 
@@ -313,24 +328,16 @@
 
 	& .current-menu-item > a,
 	& .current-menu-parent > a{
-		font-weight: 600;
-		line-height: 1.2rem;		
 
 		@media screen and (min-width: 768px) {
-			border: 3px solid $text-color;
-			border-bottom: none;
-			font-weight: 600;
-			line-height: 1.2rem;
-			top: -3px;
-			height: calc(2.25rem + 3px);
+			border-bottom: 1px solid $link-color;
 		}
 
 		@media screen and (min-width: 1400px) {
-			border: none;
-			border-bottom: 3px solid $text-color;
+			border-bottom: 1px solid $link-color;
 			top: 0;
 			line-height: 1rem;
-			height: 2.25rem;
+			//height: 2.25rem;
 		}
 	}
 }

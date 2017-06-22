@@ -11,6 +11,14 @@
 			}
 			if ( is_category() ) { echo '</div>'; } 
 	?>
+<?php if ( is_singular() ) {
+	if ( has_post_thumbnail() ) { 
+		echo '<div class="thumbnail_single">';
+		the_post_thumbnail(); 
+		echo '</div>';
+				}
+	}
+?>
 <div class="article_content">
 	<?php
 		if ( !is_search() ) 
@@ -28,12 +36,7 @@
 		<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a>
 	<?php 
 		if ( is_singular() ) { 
-				echo '</h1>'; 
-				if ( has_post_thumbnail() ) { 
-					echo '<div class="thumbnail_single">';
-					the_post_thumbnail(); 
-					echo '</div>';
-				}
+				echo '</h1>'; 				
 		} 
 		elseif ( $home_latestrecipes = "1" ) 
 			{ echo '</h3>'; }

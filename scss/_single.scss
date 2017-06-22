@@ -11,10 +11,18 @@
 	.article_content {
 		//max-width: 1200px;
 
-		@media screen and (min-width: 769px) {
+		@media screen and (min-width: 768px) {
+			
+			width: 100%;
+		    background: #FFF;
+		    margin-top: -33vh;
+		    position: relative;
+		    padding: 2rem
+		}
+
+		@media screen and (min-width: 940px) {
 			column-count: 2;
 			column-gap: 2rem;
-			width: 100%;
 		}
 
 		@media screen and (min-width: 102rem) {
@@ -25,12 +33,12 @@
 		p:first-child:first-letter {
 		  float: left;
 		  font-family: "Source Sans Pro", sans-serif;
-		  font-size: 3.7rem;
-		  font-weight: 700;
-		  line-height: 3rem;
-		  padding-top: 0px;
+		  font-size: 3.35rem;
+		  font-weight: 300;
+		  line-height: 2rem;
+		  padding-top: 0.4rem;
 		  padding-right: 8px;
-		  padding-left: 3px;
+		  margin-left: -2px;
 		}
 	}
 
@@ -45,18 +53,41 @@
 }
 
 .thumbnail_single {
-	width: 100%;
-	margin-bottom: 1.5rem;
+	width: calc(100% + 2rem);
+	margin: -1rem -1rem 1.5rem -1rem;
+
+	@media screen and (min-width: 768px) {
+		width: calc(100% + 4rem);
+		margin: -2rem -2rem 2rem -2rem;
+		padding: 0;
+		position: relative;
+		height: 66vh;
+		overflow: hidden;
+	}
 
 	& .attachment-post-thumbnail {
 		width: 100%;
 		height: auto;
 		display: block;
+
+		@media screen and (min-width: 768px) {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 	}
 
-	@media screen and (min-width: 768px) {
-		margin: 0 0 2rem 0;
-		padding: 0;
+	&:after {
+		@media screen and (min-width: 768px) {
+			content: "";
+		    display: block;
+		    position: absolute;
+		    width: 100%;
+		    top: 0;
+		    height: 100%;
+		    background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .5), transparent);	
+		}
 	}
 }
 
@@ -99,13 +130,17 @@
 
 	.recipe {
 
-		@media screen and (min-width: 769px) {
-			border: 3px solid $text-color;
+		@media screen and (min-width: 768px) {			
+			background-color: #FFF;
 			width: calc(50% - 1rem);
 			margin-left: 1rem;
 			box-sizing: border-box;
 			float: left;
-			padding: 1rem;
+			padding: 2rem;
+			margin-top: -33vh;
+			position: relative;
+			color: $link-color;
+
 		}
 
 		@media screen and (min-width: 1600px) {
@@ -116,6 +151,7 @@
 	.recipe_component_name {
 		font-weight: bold;
 		font-size: 1.25rem;
+		color: $link-color;
 		margin-bottom: .5rem;
 		clear: both;		
 	}
@@ -125,9 +161,9 @@
 	}
 
 	.recipe > .recipe_component ~ .recipe_component .recipe_component_name {
-		border-top: 3px solid $text-color;
+		border-top: 1px solid $link-color;
 		margin: 0 -1rem .5rem -1rem;
-		padding: .5rem 1rem 0 1rem; 
+		padding: 2rem 1rem 0 1rem; 
 	}
 
 	.recipe_component_header {
@@ -197,6 +233,7 @@
 
 	& .recipe {
 		position: fixed;
+		z-index: 4;
 		top: 0;
 		left: 0;
 		bottom: 0;

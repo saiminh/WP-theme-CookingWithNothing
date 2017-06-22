@@ -1,5 +1,5 @@
 //Variable 
-$cwn_borders: 3px solid $text-color;
+$cwn_borders: 1px solid $special-color;
 
 body {
 	background-color: $bg-color;
@@ -16,6 +16,10 @@ html, body * {
 
 	@media screen and (max-width: 767px) {
 		margin-top: 1rem;
+	}
+
+	@media screen and (min-width: 768px) {
+		//padding-top: 6rem;
 	}
 
 	@media screen and (min-width: 1400px) {
@@ -61,19 +65,39 @@ html, body * {
 
 	& .attachment-post-thumbnail {
 		width: 100%;
-		height: auto;
-		//border: $cwn_borders;
+		height: auto;		
+	}
+}
+
+.home_latestarticle_wrapper {
+	@media screen and (min-width: 768px) {
+		overflow: hidden;
+	    margin: -2rem -2rem 2rem -2rem;
+	    position: relative;
+	    padding: 10rem 2rem 2rem 2rem;
+	    min-height: 95vh;
+	}
+
+	@media screen and (min-width: 1400px) {
+		margin: -2em -4rem 2rem 0;
 	}
 }
 
 .home_latestarticle {
-	margin-bottom: 2rem;
-	width: 100%;
-	overflow: auto;
+	margin-bottom: 2rem;	
+	//overflow: auto;
 
 	& .attachment-post-thumbnail {
-			
+		margin-left: -1rem;
+		margin-right: -1rem;
+		margin-top: -1rem;
+		width: calc(100% + 2rem);
+
+		@media screen and (min-width: 768px) {
+			margin: 0 0 1rem 0;
+			width: 100%;			
 		}
+	}
 }
 
 .home_latestarticle_header {
@@ -85,28 +109,55 @@ html, body * {
 	box-sizing: border-box;
 
 	@media screen and (min-width: 768px) {
-		width: 66.6%;
-		height: auto;
-		clear: both;
-		float: left;
-		padding-right: 1.5rem; 
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		overflow: hidden;
+	}
+
+	@media screen and (min-width: 1200px) {
+
 	}
 
 	& img {
-		background-color: #FFF;
+		@media screen and (min-width: 768px) {
+			background-color: #FFF;
+			position: relative;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+			margin: 0;
+		}
+	}
+
+	&:after {
+		@media screen and (min-width: 768px) {
+			content: "";
+		    display: block;
+		    position: absolute;
+		    width: 100%;
+		    top: 0;
+		    height: 100%;
+		    background: linear-gradient(rgba(255, 255, 255, .75), transparent);	
+		}
 	}
 }
 
 .home_latestarticle_content {
 	position: relative;
 
-	& .entry-content_text {
+	@media screen and (min-width: 768px) {
+		background: #FFF;
+		padding: 2rem;
+		width: 50%;
+	}
 
-		@media screen and (min-width: 768px) {
-			float: left;
-			width: 33.3%;
-		}
-
+	@media screen and (min-width: 1400px) {
+		position: absolute;
+		bottom: 2rem;
 	}
 }
 
@@ -134,33 +185,26 @@ html, body * {
 	clear: both;
 	margin-top: 2rem;
 	padding-top: 1rem;
-	border-top: $cwn_borders;
 }
 
-.home_latestrecipes_wrapper_header{
-	font-size: 1.75rem;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 700;
-	margin-bottom: 1rem;
-}
 
-.entry-title_latestrecipes {
-	font-size: 1.33rem;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 700;
-	margin-bottom: 0.5rem;
-	line-height: 1.33;
-
-	& a {
-		text-decoration: none;
-	}
-}
 
 // Archive specific layout
 
 .archive {
 
-	.post {
+	& #container {
+		@media screen and (min-width: 768px) and (max-width: 1399px) {
+			margin-top: 6rem;
+		}
+	}
+
+	& .entry-title {
+		font-size: 2rem;
+		color: $link-color;
+	}
+
+	& .post {
 		margin: 0 0 3.5rem 0;
 
 		@media screen and (min-width: 768px) {
