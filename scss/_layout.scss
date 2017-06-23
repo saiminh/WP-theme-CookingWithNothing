@@ -198,8 +198,8 @@ html, body * {
 
 // Archive specific layout
 
-.archive,
-.search {
+body.archive,
+body.search {
 
 	& #container {
 		@media screen and (min-width: 768px) and (max-width: 1399px) {
@@ -212,7 +212,8 @@ html, body * {
 		color: $link-color;
 	}
 
-	& .post {
+	& .post,
+	& .page {
 		margin: 0 0 3.5rem 0;
 
 		@media screen and (min-width: 768px) {
@@ -311,4 +312,11 @@ html, body * {
 }
 
 
+// Random shit
+
+.thumbnail_placeholder {
+	width: 100%;
+	height: 33vh;
+	background: #DDD;
+}
 

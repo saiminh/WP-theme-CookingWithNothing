@@ -136,7 +136,8 @@ textarea {
 
 .entry-title_latestrecipes {
 	//@extend .entry-title;
-	font-size: 1.125rem;
+	font-family: $headline-font;
+	font-size: 1.25rem;
 	margin-bottom: .75rem;
 	margin-top: .25rem;
 
@@ -154,9 +155,9 @@ textarea {
 	border-top: 1px solid $special-color;
 }
 
-.single-post .article_content,
-.page .article_content,
-.home .home_latestarticle {
+body.single-post .article_content,
+body.page .article_content,
+body.home .home_latestarticle {
 	p:first-child:first-letter {
 	  float: left;
 	  font-family: $headline-font;

@@ -9,6 +9,9 @@
 				the_post_thumbnail(); 
 				echo '</a>';
 			}
+			if ( !is_singular() && !has_post_thumbnail() ) { 
+				echo '<div class="thumbnail_placeholder"></div>';
+			}
 			if ( is_category() ) { echo '</div>'; } 
 	?>
 <?php if ( is_singular() ) {

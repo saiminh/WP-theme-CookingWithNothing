@@ -148,7 +148,8 @@ textarea {
       font-size: 2rem; } }
 
 .entry-title_latestrecipes {
-  font-size: 1.125rem;
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 1.25rem;
   margin-bottom: .75rem;
   margin-top: .25rem; }
   .entry-title_latestrecipes a {
@@ -161,9 +162,9 @@ textarea {
   margin-top: 1rem;
   border-top: 1px solid #f8e8e6; }
 
-.single-post .article_content p:first-child:first-letter,
-.page .article_content p:first-child:first-letter,
-.home .home_latestarticle p:first-child:first-letter {
+body.single-post .article_content p:first-child:first-letter,
+body.page .article_content p:first-child:first-letter,
+body.home .home_latestarticle p:first-child:first-letter {
   float: left;
   font-family: "Julius Sans One", sans-serif;
   font-size: 3rem;
@@ -324,29 +325,31 @@ html, body * {
   top: 0px; }
 
 @media screen and (min-width: 768px) and (max-width: 1399px) {
-  .archive #container,
-  .search #container {
+  body.archive #container,
+  body.search #container {
     margin-top: 6rem; } }
-.archive .entry-title, .archive .home_latestrecipes_wrapper_header, .archive .comment-reply-title,
-.search .entry-title,
-.search .home_latestrecipes_wrapper_header,
-.search .comment-reply-title {
+body.archive .entry-title, body.archive .home_latestrecipes_wrapper_header, body.archive .comment-reply-title,
+body.search .entry-title,
+body.search .home_latestrecipes_wrapper_header,
+body.search .comment-reply-title {
   font-size: 2rem;
   color: #D4776B; }
-.archive .post,
-.search .post {
+body.archive .post, body.archive .page,
+body.search .post,
+body.search .page {
   margin: 0 0 3.5rem 0; }
   @media screen and (min-width: 768px) {
-    .archive .post,
-    .search .post {
+    body.archive .post, body.archive .page,
+    body.search .post,
+    body.search .page {
       width: 33.3%;
       float: left;
       box-sizing: border-box;
       padding-left: 1.5rem;
       position: relative;
       left: -1.5rem; } }
-.archive .attachment-post-thumbnail,
-.search .attachment-post-thumbnail {
+body.archive .attachment-post-thumbnail,
+body.search .attachment-post-thumbnail {
   width: 100%;
   height: auto; }
 
@@ -404,6 +407,11 @@ html, body * {
   .loading #container {
     opacity: 0;
     transition: all .3s ease-out; }
+
+.thumbnail_placeholder {
+  width: 100%;
+  height: 33vh;
+  background: #DDD; }
 
 #header {
   background: #f8e8e6;
@@ -686,35 +694,35 @@ html, body * {
       position: relative;
       font-size: 0.81rem; } }
 
-.single-post #container,
-.page #container {
+body.single-post #container,
+body.page #container {
   padding: 0; }
   @media screen and (min-width: 1400px) {
-    .single-post #container,
-    .page #container {
+    body.single-post #container,
+    body.page #container {
       padding-left: 2rem; } }
 @media screen and (min-width: 768px) {
-  .single-post .article_content,
-  .page .article_content {
+  body.single-post .article_content,
+  body.page .article_content {
     width: 100%;
     background: #FFF;
     margin-top: -33vh;
     position: relative;
     padding: 2rem; } }
 @media screen and (min-width: 940px) {
-  .single-post .article_content,
-  .page .article_content {
+  body.single-post .article_content,
+  body.page .article_content {
     column-count: 2;
     column-gap: 2rem; } }
 @media screen and (min-width: 102rem) {
-  .single-post .article_content,
-  .page .article_content {
+  body.single-post .article_content,
+  body.page .article_content {
     column-count: 3;
     column-gap: 2rem; } }
-.single-post .entry-title, .single-post .home_latestrecipes_wrapper_header, .single-post .comment-reply-title,
-.page .entry-title,
-.page .home_latestrecipes_wrapper_header,
-.page .comment-reply-title {
+body.single-post .entry-title, body.single-post .home_latestrecipes_wrapper_header, body.single-post .comment-reply-title,
+body.page .entry-title,
+body.page .home_latestrecipes_wrapper_header,
+body.page .comment-reply-title {
   margin-top: 0;
   -webkit-column-span: all;
   -moz-column-span: all; }
