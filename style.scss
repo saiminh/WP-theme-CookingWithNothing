@@ -20,12 +20,11 @@ $special-color: lighten($link-color, 31%);
 
 $spacing: 3rem;
 
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i');
 @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
-@import url('https://fonts.googleapis.com/css?family=Vesper+Libre');
+@import url('https://fonts.googleapis.com/css?family=Spectral:400,400i,700');
 
 $headline-font: 'Julius Sans One', sans-serif;
-$text-font: 'Vesper Libre', serif;
+$text-font: 'Spectral', serif;
 
 @import 
 		'scss/_reset.scss',

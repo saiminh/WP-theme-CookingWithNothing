@@ -11,9 +11,8 @@ Tags: black, blue, white, light, one-column, fluid-layout, responsive-layout, cu
 Text Domain: cookingwithnothing
 
 */
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i");
 @import url("https://fonts.googleapis.com/css?family=Julius+Sans+One");
-@import url("https://fonts.googleapis.com/css?family=Vesper+Libre");
+@import url("https://fonts.googleapis.com/css?family=Spectral:400,400i,700");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   font-size: 100%;
   font: inherit;
@@ -50,7 +49,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: absolute !important; }
 
 html, body {
-  font-family: "Vesper Libre", serif;
+  font-family: "Spectral", serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.58;
@@ -97,7 +96,7 @@ textarea {
   padding: .5rem;
   color: #655;
   border: 3px solid #655;
-  font-family: "Vesper Libre", serif;
+  font-family: "Spectral", serif;
   font-style: italic;
   cursor: text;
   display: block;
@@ -144,6 +143,9 @@ textarea {
   .entry-title a, .home_latestrecipes_wrapper_header a, .comment-reply-title a {
     text-decoration: none;
     color: #D4776B; }
+  @media screen and (min-width: 1200px) {
+    .single .entry-title, .single .home_latestrecipes_wrapper_header, .single .comment-reply-title, .page .entry-title, .page .home_latestrecipes_wrapper_header, .page .comment-reply-title {
+      font-size: 2rem; } }
 
 .entry-title_latestrecipes {
   font-size: 1.125rem;
@@ -158,6 +160,18 @@ textarea {
   padding-top: 1rem;
   margin-top: 1rem;
   border-top: 1px solid #f8e8e6; }
+
+.single-post .article_content p:first-child:first-letter,
+.page .article_content p:first-child:first-letter,
+.home .home_latestarticle p:first-child:first-letter {
+  float: left;
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 2rem;
+  padding-top: 0.65rem;
+  padding-right: 5px;
+  margin-left: -2px; }
 
 .entry-meta {
   font-size: 0.8rem;
@@ -310,22 +324,29 @@ html, body * {
   top: 0px; }
 
 @media screen and (min-width: 768px) and (max-width: 1399px) {
-  .archive #container {
+  .archive #container,
+  .search #container {
     margin-top: 6rem; } }
-.archive .entry-title, .archive .home_latestrecipes_wrapper_header, .archive .comment-reply-title {
+.archive .entry-title, .archive .home_latestrecipes_wrapper_header, .archive .comment-reply-title,
+.search .entry-title,
+.search .home_latestrecipes_wrapper_header,
+.search .comment-reply-title {
   font-size: 2rem;
   color: #D4776B; }
-.archive .post {
+.archive .post,
+.search .post {
   margin: 0 0 3.5rem 0; }
   @media screen and (min-width: 768px) {
-    .archive .post {
+    .archive .post,
+    .search .post {
       width: 33.3%;
       float: left;
       box-sizing: border-box;
       padding-left: 1.5rem;
       position: relative;
       left: -1.5rem; } }
-.archive .attachment-post-thumbnail {
+.archive .attachment-post-thumbnail,
+.search .attachment-post-thumbnail {
   width: 100%;
   height: auto; }
 
@@ -345,15 +366,43 @@ html, body * {
 #footer {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #f8e8e6; }
+  border-top: 1px solid #f8e8e6;
+  font-size: .7rem; }
+
+#nav-below {
+  margin: 0 -1rem;
+  background: #f8e8e6;
+  overflow: auto; }
+  @media screen and (min-width: 768px) {
+    #nav-below {
+      margin: 0; } }
+
+.nav-previous > a,
+.nav-next > a {
+  display: block;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 1rem .5rem;
+  background: #f8e8e6;
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 1rem;
+  color: #D4776B;
+  float: left;
+  text-decoration: none;
+  text-align: center; }
+  .nav-previous > a .meta-nav,
+  .nav-next > a .meta-nav {
+    display: block;
+    font-size: 1rem; }
+
+.nav-previous > a {
+  border-right: 1px dashed #FFF; }
 
 #container {
   opacity: 1;
-  transform: scale(1);
   transition: all .3s ease-out; }
   .loading #container {
     opacity: 0;
-    transform: scale(0.2);
     transition: all .3s ease-out; }
 
 #header {
@@ -637,41 +686,41 @@ html, body * {
       position: relative;
       font-size: 0.81rem; } }
 
-.single-post #container {
+.single-post #container,
+.page #container {
   padding: 0; }
   @media screen and (min-width: 1400px) {
-    .single-post #container {
+    .single-post #container,
+    .page #container {
       padding-left: 2rem; } }
 @media screen and (min-width: 768px) {
-  .single-post .article_content {
+  .single-post .article_content,
+  .page .article_content {
     width: 100%;
     background: #FFF;
     margin-top: -33vh;
     position: relative;
     padding: 2rem; } }
 @media screen and (min-width: 940px) {
-  .single-post .article_content {
+  .single-post .article_content,
+  .page .article_content {
     column-count: 2;
     column-gap: 2rem; } }
 @media screen and (min-width: 102rem) {
-  .single-post .article_content {
+  .single-post .article_content,
+  .page .article_content {
     column-count: 3;
     column-gap: 2rem; } }
-.single-post .article_content p:first-child:first-letter {
-  float: left;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 3.35rem;
-  font-weight: 300;
-  line-height: 2rem;
-  padding-top: 0.4rem;
-  padding-right: 8px;
-  margin-left: -2px; }
-.single-post .entry-title, .single-post .home_latestrecipes_wrapper_header, .single-post .comment-reply-title {
+.single-post .entry-title, .single-post .home_latestrecipes_wrapper_header, .single-post .comment-reply-title,
+.page .entry-title,
+.page .home_latestrecipes_wrapper_header,
+.page .comment-reply-title {
   margin-top: 0;
   -webkit-column-span: all;
   -moz-column-span: all; }
 
 .thumbnail_single {
+  background: #f8e8e6;
   width: calc(100% + 2rem);
   margin: -1rem -1rem 1.5rem -1rem; }
   @media screen and (min-width: 768px) {
@@ -856,7 +905,8 @@ html, body * {
   font-size: 1em;
   font-family: 'Source Sans Pro', sans-serif;
   position: relative;
-  top: -5px; }
+  top: -5px;
+  padding: 1rem; }
   #s::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: #655;
@@ -880,7 +930,8 @@ html, body * {
   #s:focus {
     width: 140px;
     outline: none;
-    padding: 0 .25rem; }
+    padding: 1rem;
+    background: #FFF; }
 
 /** Dave's WordPress Live Search CSS **/
 ul.search_results {
@@ -890,7 +941,8 @@ ul.search_results {
   max-height: 500px;
   position: absolute;
   top: 20px;
-  left: 0px;
+  left: auto !important;
+  right: 2rem;
   overflow: auto;
   z-index: 9999;
   list-style-type: none;
@@ -898,19 +950,18 @@ ul.search_results {
   list-style-position: inside;
   padding: 0px;
   margin: 0px;
-  -moz-box-shadow: 5px 5px 3px #222;
-  -webkit-box-shadow: 5px 5px 3px #222;
-  box-shadow: 5px 5px 3px #222; }
+  -moz-box-shadow: 0px 2px 4px #D4776B;
+  -webkit-box-shadow: 0px 2px 4px #D4776B;
+  box-shadow: 0px 2px 4px #D4776B; }
 
 ul.search_results li {
   display: block;
   padding: 5px 10px 5px 10px;
   margin: 0px 0px 0px 0px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #f1d2ce;
   text-align: left;
-  color: #000;
-  background-color: #ddd;
+  color: #D4776B;
+  background-color: #f8e8e6;
   text-decoration: none; }
 
 ul.search_results li:hover {
@@ -918,11 +969,11 @@ ul.search_results li:hover {
 
 ul.search_results li a, ul.search_results li a:visited {
   display: block;
-  color: #000;
+  color: #D4776B;
   margin-left: 0px;
   padding-left: 0px;
   text-decoration: none;
-  font-weight: bold; }
+  font-size: .85rem; }
 
 ul.search_results p#daves-wordpress-live-search_author {
   margin: 0px;
@@ -958,17 +1009,18 @@ ul.search_results .clearfix {
   clear: both !important; }
 
 .search_footer {
-  background-color: #888;
+  background-color: #D4776B;
   width: 100%;
-  text-align: right;
+  text-align: center;
   padding: .5em 0;
-  font-size: .9em; }
+  font-size: .8em; }
 
 .search_footer a,
 .search_footer a:visited {
+  font-family: "Julius Sans One", sans-serif;
   color: #fff;
-  margin-right: 1em;
-  text-decoration: none; }
+  text-decoration: none;
+  text-transform: uppercase; }
 
 #search_results_activity_indicator {
   z-index: 999999; }

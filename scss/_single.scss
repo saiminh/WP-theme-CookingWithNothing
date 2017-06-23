@@ -1,4 +1,5 @@
-.single-post {
+.single-post,
+.page {
 
 	#container {
 		padding: 0;
@@ -29,17 +30,6 @@
 			column-count: 3;
 			column-gap: 2rem;
 		}
-
-		p:first-child:first-letter {
-		  float: left;
-		  font-family: "Source Sans Pro", sans-serif;
-		  font-size: 3.35rem;
-		  font-weight: 300;
-		  line-height: 2rem;
-		  padding-top: 0.4rem;
-		  padding-right: 8px;
-		  margin-left: -2px;
-		}
 	}
 
 	.entry-title {
@@ -53,6 +43,7 @@
 }
 
 .thumbnail_single {
+	background: $special-color;
 	width: calc(100% + 2rem);
 	margin: -1rem -1rem 1.5rem -1rem;
 

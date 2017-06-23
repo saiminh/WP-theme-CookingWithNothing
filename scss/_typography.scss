@@ -119,6 +119,15 @@ textarea {
 		text-decoration: none;
 		color: $link-color;
 	}
+
+	.single &,
+	.page & {
+
+		@media screen and (min-width: 1200px) {
+			font-size: 2rem;
+		}
+
+	}
 }
 
 .home_latestrecipes_wrapper_header{
@@ -143,6 +152,21 @@ textarea {
 	padding-top: 1rem;
 	margin-top: 1rem;
 	border-top: 1px solid $special-color;
+}
+
+.single-post .article_content,
+.page .article_content,
+.home .home_latestarticle {
+	p:first-child:first-letter {
+	  float: left;
+	  font-family: $headline-font;
+	  font-size: 3rem;
+	  font-weight: 300;
+	  line-height: 2rem;
+	  padding-top: 0.65rem;
+	  padding-right: 5px;
+	  margin-left: -2px;
+	}
 }
 
 .entry-meta {
