@@ -157,7 +157,7 @@ textarea {
   font-weight: bold;
   padding-top: 1rem;
   margin-top: 1rem;
-  border-top: 1px solid #F3E7E4; }
+  border-top: 1px solid #f8e8e6; }
 
 .entry-meta {
   font-size: 0.8rem;
@@ -203,23 +203,35 @@ html, body * {
       width: 33.3%;
       float: left;
       box-sizing: border-box;
-      padding-left: 1.5rem;
-      position: relative;
-      left: -1.5rem; } }
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      position: relative; } }
 .home .attachment-post-thumbnail {
   width: 100%;
   height: auto; }
 
+.home_latestrecipes_wrapper {
+  clear: both;
+  margin-top: .5rem;
+  padding-top: 1rem; }
+  @media screen and (min-width: 768px) {
+    .home_latestrecipes_wrapper {
+      margin-left: -0.75rem;
+      margin-right: -0.75rem; } }
+
+.home_latestrecipes_wrapper_header {
+  padding: 0 0.75rem; }
+
 @media screen and (min-width: 768px) {
   .home_latestarticle_wrapper {
     overflow: hidden;
-    margin: -2rem -2rem 2rem -2rem;
+    margin: -2rem -2rem 0 -2rem;
     position: relative;
     padding: 10rem 2rem 2rem 2rem;
-    min-height: 95vh; } }
+    min-height: 75vh; } }
 @media screen and (min-width: 1400px) {
   .home_latestarticle_wrapper {
-    margin: -2em -4rem 2rem 0; } }
+    margin: -2em -4rem 0 -2rem; } }
 
 .home_latestarticle {
   margin-bottom: 2rem; }
@@ -297,11 +309,6 @@ html, body * {
   right: calc(100% + 3rem);
   top: 0px; }
 
-.home_latestrecipes_wrapper {
-  clear: both;
-  margin-top: 2rem;
-  padding-top: 1rem; }
-
 @media screen and (min-width: 768px) and (max-width: 1399px) {
   .archive #container {
     margin-top: 6rem; } }
@@ -338,16 +345,25 @@ html, body * {
 #footer {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #F3E7E4; }
+  border-top: 1px solid #f8e8e6; }
+
+#container {
+  opacity: 1;
+  transform: scale(1);
+  transition: all .3s ease-out; }
+  .loading #container {
+    opacity: 0;
+    transform: scale(0.2);
+    transition: all .3s ease-out; }
 
 #header {
-  background: #F3E7E4;
+  background: #f8e8e6;
   margin: -1rem -1rem 1rem -1rem;
-  padding: 1.5rem 1rem; }
+  padding: 1rem; }
   @media screen and (min-width: 768px) {
     #header {
       margin: -2rem -2rem 2rem -2rem;
-      padding: 1.5rem 2rem;
+      padding: 2rem;
       height: 6rem;
       background: transparent;
       position: absolute;
@@ -360,8 +376,10 @@ html, body * {
   @media screen and (min-width: 1400px) {
     #header {
       position: fixed;
-      height: auto;
-      padding: 1rem; } }
+      height: 100vh;
+      width: 14rem;
+      padding: 1.5rem;
+      background: #f8e8e6; } }
 
 #site-title a {
   box-sizing: border-box;
@@ -371,10 +389,22 @@ html, body * {
   text-indent: -9999px;
   box-sizing: border-box;
   overflow: hidden;
-  background-image: url(theme_assets/CWN_logo.svg);
   background-position: 0	0;
   background-size: 100%;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  position: relative; }
+  @media screen and (min-width: 1400px) {
+    #site-title a {
+      width: 100%;
+      height: 75px; } }
+
+#cwn_logo {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0; }
+  #cwn_logo path, #cwn_logo rect {
+    fill: #D4776B; }
 
 #site-description {
   text-align: center;
@@ -383,7 +413,7 @@ html, body * {
 .mobile-nav-toggle {
   width: 30px;
   position: absolute;
-  top: 3rem;
+  top: 2.5rem;
   right: 1rem; }
   @media screen and (min-width: 768px) {
     .mobile-nav-toggle {
@@ -512,7 +542,7 @@ html, body * {
   position: relative; }
   @media screen and (max-width: 767px) {
     #menu {
-      background-color: #F3E7E4;
+      background-color: #f8e8e6;
       position: fixed;
       top: 5rem;
       left: 0;
@@ -535,7 +565,7 @@ html, body * {
       margin-left: 0;
       margin-top: 1rem;
       position: absolute;
-      width: 12rem; } }
+      width: 11rem; } }
 
 @media screen and (min-width: 768px) {
   #menu-cwn_main_menu {
@@ -570,7 +600,8 @@ html, body * {
       font-size: .85rem;
       line-height: .75rem;
       padding: .5rem 1.5rem;
-      border-bottom: none; } }
+      border-bottom: 1px solid transparent;
+      transition: .3s border-color ease-in; } }
   @media screen and (min-width: 1200px) {
     #menu-cwn_main_menu .menu-item > a {
       font-size: 0.81rem; } }
@@ -579,8 +610,10 @@ html, body * {
       float: none;
       display: block;
       line-height: 1.2rem;
-      border-bottom: 1px solid #F3E7E4;
+      border-bottom: 1px solid #f1d2ce;
       padding: .5rem 0; } }
+  #menu-cwn_main_menu .menu-item > a:hover {
+    border-bottom: 1px solid #D4776B; }
 @media screen and (min-width: 768px) {
   #menu-cwn_main_menu .current-menu-item > a, #menu-cwn_main_menu .current-menu-parent > a {
     border-bottom: 1px solid #D4776B; } }

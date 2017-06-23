@@ -57,9 +57,9 @@ html, body * {
 			width: 33.3%;
 			float: left;
 			box-sizing: border-box;
-			padding-left: 1.5rem;
-			position: relative;
-			left: -1.5rem;
+			padding-left: 0.75rem;
+			padding-right: 0.75rem;
+			position: relative;			
 		}
 	}
 
@@ -69,17 +69,32 @@ html, body * {
 	}
 }
 
+.home_latestrecipes_wrapper {
+		clear: both;
+		margin-top: .5rem;
+		padding-top: 1rem;
+		
+		@media screen and (min-width: 768px) {
+			margin-left: -0.75rem;
+			margin-right: -0.75rem;
+		}
+	}
+
+.home_latestrecipes_wrapper_header {
+	padding: 0 0.75rem;
+}
+
 .home_latestarticle_wrapper {
 	@media screen and (min-width: 768px) {
 		overflow: hidden;
-	    margin: -2rem -2rem 2rem -2rem;
+	    margin: -2rem -2rem 0 -2rem;
 	    position: relative;
 	    padding: 10rem 2rem 2rem 2rem;
-	    min-height: 95vh;
+	    min-height: 75vh;
 	}
 
 	@media screen and (min-width: 1400px) {
-		margin: -2em -4rem 2rem 0;
+		margin: -2em -4rem 0 -2rem;
 	}
 }
 
@@ -181,14 +196,6 @@ html, body * {
     top: 0px;
 }
 
-.home_latestrecipes_wrapper {
-	clear: both;
-	margin-top: 2rem;
-	padding-top: 1rem;
-}
-
-
-
 // Archive specific layout
 
 .archive {
@@ -247,3 +254,18 @@ html, body * {
 	padding-top: 1rem;
 	border-top: $cwn_borders;
 }
+
+// Page Transitions 
+
+#container {
+	opacity: 1;
+	transform: scale(1);
+	transition: all .3s ease-out;
+
+	.loading & {
+		opacity: 0;
+		transform: scale(.2);
+		transition: all .3s ease-out;
+	}
+}
+

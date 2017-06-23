@@ -9,13 +9,26 @@
 <script type="text/javascript">
 
 	(function($) {
-		
+
+		// ------------------------------------
+		// Stuff that happens after page has loaded
+		// ------------------------------------
+		$(window).on('load', function() { // makes sure the whole site is loaded  
+			$('body').removeClass('loading');
+		});
+
+		// ------------------------------------
+		//	Page Transitions
+		// ------------------------------------			
+		$('.menu-item').on('click', function(){
+			$('body').addClass('loading');
+		});
 		// ------------------------------------
 		//	Enter cook mode
 		// ------------------------------------		
 		$('.toggle-cookmode').on('click', function(){
 			$('body').toggleClass('cookmode-on');
-		})
+		});
 
 		// ------------------------------------
 		//	Mobile Nav

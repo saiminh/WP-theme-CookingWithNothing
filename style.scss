@@ -16,7 +16,7 @@ $bg-color: #FFF;
 $text-color: #655;
 $logo-color: #D4776B;
 $link-color: #D4776B;
-$special-color: #F3E7E4;
+$special-color: lighten($link-color, 31%);
 
 $spacing: 3rem;
 
