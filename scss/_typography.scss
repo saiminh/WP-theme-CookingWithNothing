@@ -107,12 +107,13 @@ textarea {
 
 .entry-title {
 	font-family: $headline-font;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: 300;
 	line-height: 1.33;
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	text-transform: uppercase;
     letter-spacing: .05rem;
+    text-align: center;
     //-webkit-font-smoothing: antialiased;
 
 	& a{
@@ -174,6 +175,11 @@ body.home .home_latestarticle {
 .entry-meta {
 	font-size: 0.8rem;
 	padding-bottom: .25rem;
+
+	.home_latestarticle_content & {
+		text-align: center;
+		font-style: italic;
+	}
 }
 
 

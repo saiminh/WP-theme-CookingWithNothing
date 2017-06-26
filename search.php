@@ -4,9 +4,28 @@
 <header class="header">
 <h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'cookingwithnothing' ), get_search_query() ); ?></h1>
 </header>
-<?php while ( have_posts() ) : the_post(); ?>
-<?php get_template_part( 'entry' ); ?>
-<?php endwhile; ?>
+<?php $i = 0; // This whole extra code is to create rows for column layouts ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php
+	if($i == 0) {
+		echo '<div class="ng-row">';
+	}
+?>
+	<?php get_template_part( 'entry' ); ?>
+
+	<?php
+		$i++;
+		if($i == 3) {
+			$i = 0;
+			echo '</div>';
+		}
+	?>
+<?php endwhile; endif; ?>
+<?php
+	if($i > 0) {
+		echo '</div>';
+	}
+?>
 <?php get_template_part( 'nav', 'below' ); ?>
 <?php else : ?>
 <article id="post-0" class="post no-results not-found">

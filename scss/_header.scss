@@ -24,7 +24,7 @@
 		position: fixed;
 		height: 100vh;
 		width: 14rem;
-		padding: 1.5rem;
+		padding: 2rem;
 		background: $special-color;
 	}
 }
@@ -32,16 +32,19 @@
 #site-title a {
 	box-sizing: border-box;
 	display: block;
-	width: 180px;
-	height: 54px;
+	width: 120px;
+	height: 34px;
 	text-indent: -9999px;
 	box-sizing: border-box;
 	overflow: hidden;
-	//background-image: url(theme_assets/CWN_logo.svg); 
-    background-position: 0	0;
-    background-size: 100%;
-    background-repeat: no-repeat;
     position: relative;
+    margin: 0 auto;
+
+     @media screen and (min-width: 768px) {
+     	width: 180px;
+		height: 54px;
+		margin-left: 0;
+     }
 
     @media screen and (min-width: 1400px) {
     	width: 100%;
@@ -73,7 +76,7 @@
 
 	width: 30px;
 	position: absolute;
-	top: 2.5rem;
+	top: 2.12rem;
 	right: 1rem;
 
 	svg *{
@@ -259,7 +262,7 @@
 	@media screen and (max-width: 767px) {
 		background-color: $special-color;
 	    position: fixed;
-	    top: 5rem;
+	    top: 3.5rem;
 	    left: 0;
 	    right: 0;
 	    bottom: 0;
@@ -277,7 +280,7 @@
 
 	@media screen and (min-width: 768px) { 
 		top: -2.5rem;
-		margin-left: 14rem;
+		margin-left: 12rem;
 	}
 
 	@media screen and (min-width: 1400px) {
@@ -285,7 +288,7 @@
 		margin-left: 0;
 		margin-top: 1rem;
 		position: absolute;
-		width: 11rem;
+		width: 10rem;
 	}
 }
 
@@ -327,13 +330,14 @@
 			position: relative;						
 			font-size: .85rem;
 			line-height: .75rem;
-			padding: .5rem 1.5rem;
+			padding: .5rem 1rem;
 			border-bottom: 1px solid transparent;
 			transition: .3s border-color ease-in;
 		}
 
 		@media screen and (min-width: 1200px) {
 			font-size: 0.81rem;	
+			padding: .5rem 1.5rem;
 		}
 
 		@media screen and (min-width: 1400px) {
@@ -372,7 +376,7 @@
 
 	@media screen and (min-width: 768px) {
 		position: absolute;
-		bottom: 5px;
+		bottom: 0px;
 		right: 0;
 		font-size: 0.85rem;
 	}
@@ -380,5 +384,6 @@
 	@media screen and (min-width: 1400px) {
 		position: relative;
 		font-size: 0.81rem;
+		right: auto;
 	}
 }

@@ -16,7 +16,7 @@ body.page {
 			
 			width: 100%;
 		    background: #FFF;
-		    margin-top: -33vh;
+		    margin-top: -40vh;
 		    position: relative;
 		    padding: 2rem
 		}
@@ -36,9 +36,17 @@ body.page {
 		margin-top: 0;
 		-webkit-column-span: all;
 		-moz-column-span: all;
+		column-span: all;
 	}
 
 	.entry-meta {
+		-webkit-column-span: all;
+		-moz-column-span: all;
+		column-span: all;
+		text-align: center;
+		margin-bottom: 0.5rem;
+		font-style: italic;
+		font-size: 1rem;
 	}
 }
 
@@ -52,7 +60,7 @@ body.page {
 		margin: -2rem -2rem 2rem -2rem;
 		padding: 0;
 		position: relative;
-		height: 66vh;
+		height: 100vh;
 		overflow: hidden;
 	}
 
@@ -70,7 +78,7 @@ body.page {
 	}
 
 	&:after {
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 768px) and (max-width: 1400px) {
 			content: "";
 		    display: block;
 		    position: absolute;
@@ -128,7 +136,7 @@ body.post-template-recipe-post {
 			box-sizing: border-box;
 			float: left;
 			padding: 2rem;
-			margin-top: -33vh;
+			margin-top: -40vh;
 			position: relative;
 			color: $link-color;
 
@@ -203,7 +211,7 @@ body.post-template-recipe-post {
 	display: none;
 }
 
-.cookmode-on {
+body.cookmode-on {
 
 	.close-cookmode {
 		display:inline-block;

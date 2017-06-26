@@ -8,9 +8,28 @@
 			else { _e( 'Archives', 'cookingwithnothing' ); }
 			?></h1>
 		</header>
+		<?php $i = 0; ?>
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+		<?php
+			if($i == 0) {
+				echo '<div class="ng-row">';
+			}
+		?>
 			<?php get_template_part( 'entry' ); ?>
+
+			<?php
+				$i++;
+				if($i == 2) {
+					$i = 0;
+					echo '</div>';
+				}
+			?>
 		<?php endwhile; endif; ?>
+		<?php
+			if($i > 0) {
+				echo '</div>';
+			}
+		?>
 		<?php get_template_part( 'nav', 'below' ); ?>
 	</section>
 	<?php get_sidebar(); ?>

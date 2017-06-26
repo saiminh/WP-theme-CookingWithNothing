@@ -90,7 +90,7 @@ html, body * {
 	    margin: -2rem -2rem 0 -2rem;
 	    position: relative;
 	    padding: 10rem 2rem 2rem 2rem;
-	    min-height: 75vh;
+	    min-height: 88vh;
 	}
 
 	@media screen and (min-width: 1400px) {
@@ -167,7 +167,8 @@ html, body * {
 	@media screen and (min-width: 768px) {
 		background: #FFF;
 		padding: 2rem;
-		width: 50%;
+		width: 66.6%;
+		margin-left: 16.65%
 	}
 
 	@media screen and (min-width: 1400px) {
@@ -214,10 +215,24 @@ body.search {
 		}
 	}
 
+	& .header {
+		padding: 0 0.75rem 2rem 0.75rem;
+	}
+
+	& .ng-row {
+		clear: left;
+	}
+
 	& .entry-title {
 		font-size: 2rem;
 		color: $link-color;
-		padding: 0 0.75rem;
+		margin-bottom: .5rem;
+	}
+
+	& .archive-meta {
+		font-style: italic;
+		font-size: 1.25rem;
+		text-align: center;
 	}
 
 	& .post,
@@ -263,6 +278,11 @@ body.search {
 	padding-top: 1rem;
 	border-top: $cwn_borders;
 	font-size: .7rem;
+	text-align: center;
+
+	@media screen and (min-width: 1400px) {
+		margin-left: 14rem;
+	}
 }
 
 // Meta Nav
@@ -327,3 +347,13 @@ body.search {
 	background: #DDD;
 }
 
+.post-edit-link {
+    position: fixed;
+    top: 6rem;
+    right: 0;
+    background: $special-color;
+    padding: 1rem 1.5rem;
+    border: 2px solid #D4776B;
+    font-style: italic;
+    text-decoration: none;
+}

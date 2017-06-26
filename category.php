@@ -4,9 +4,28 @@
 		<h1 class="entry-title"><?php _e( '', 'cookingwithnothing' ); ?><?php single_cat_title(); ?></h1>
 		<?php if ( '' != category_description() ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . category_description() . '</div>' ); ?>
 	</header>
+	<?php $i = 0; // This whole extra code is to create rows for column layouts ?>
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+	<?php
+		if($i == 0) {
+			echo '<div class="ng-row">';
+		}
+	?>
 		<?php get_template_part( 'entry' ); ?>
+
+		<?php
+			$i++;
+			if($i == 3) {
+				$i = 0;
+				echo '</div>';
+			}
+		?>
 	<?php endwhile; endif; ?>
+	<?php
+		if($i > 0) {
+			echo '</div>';
+		}
+	?>
 	<?php get_template_part( 'nav', 'below' ); ?>
 </section>
 <?php get_sidebar(); ?>
