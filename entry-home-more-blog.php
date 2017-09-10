@@ -1,31 +1,9 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php
-			if ( is_category() ) { echo '<div class="thumbnail_category">'; }
-
-			if ( !is_singular() && has_post_thumbnail() ) { 
-				echo '<a href="'; 
-				the_permalink(); 
-				echo '" title="<?php the_title_attribute(); ?>" rel="bookmark">';
-				the_post_thumbnail(); 
-				echo '</a>';
-			}
-			if ( !is_singular() && !has_post_thumbnail() ) { 
-				echo '<div class="thumbnail_placeholder"></div>';
-			}
-			if ( is_category() ) { echo '</div>'; } 
-	?>
-<?php if ( is_singular() ) {
-	if ( has_post_thumbnail() ) { 
-		echo '<div class="thumbnail_single">';
-		the_post_thumbnail(); 
-		echo '</div>';
-				}
-	}
-?>
+	
 <div class="article_content">
 	<?php
 		if ( get_post_type() == 'post' )
-			get_template_part( 'entry', 'meta' );		
+			get_template_part( 'entry', 'meta' ); 
 	?>
 	<header>
 	<?php

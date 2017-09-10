@@ -14,11 +14,12 @@ html, body * {
 	box-sizing: border-box;
 	clear: both;
 
-	@media screen and (max-width: 767px) {
-		margin-top: 1rem;
+
+	@media screen and (max-width: 768px) {
+		margin-top: 70px;
 	}
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 769px) {
 		//padding-top: 6rem;
 	}
 
@@ -37,7 +38,7 @@ html, body * {
 	margin: 0 auto;
 	padding: 1rem;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 601px) {
 		padding: 2rem;
 	}
 }
@@ -53,7 +54,7 @@ html, body * {
 	& .post {
 		margin: 0;
 
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 769px) {
 			width: 33.3%;
 			float: left;
 			box-sizing: border-box;
@@ -74,7 +75,7 @@ html, body * {
 		margin-top: .5rem;
 		padding-top: 1rem;
 		
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 769px) {
 			margin-left: -0.75rem;
 			margin-right: -0.75rem;
 		}
@@ -85,11 +86,11 @@ html, body * {
 }
 
 .home_latestarticle_wrapper {
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 769px) {
 		overflow: hidden;
 	    margin: -2rem -2rem 0 -2rem;
 	    position: relative;
-	    padding: 10rem 2rem 2rem 2rem;
+	    padding: 2rem 2rem 2rem 2rem;
 	    min-height: 88vh;
 	}
 
@@ -102,15 +103,32 @@ html, body * {
 	margin-bottom: 2rem;	
 	//overflow: auto;
 
+	@media screen and (min-width: 769px) {
+		margin-top: 10rem;
+	}
+
 	& .attachment-post-thumbnail {
 		margin-left: -1rem;
 		margin-right: -1rem;
 		margin-top: -1rem;
 		width: calc(100% + 2rem);
 
-		@media screen and (min-width: 768px) {
-			margin: 0 0 1rem 0;
-			width: 100%;			
+		@media screen and (min-width: 601px){
+			margin-left: -2rem;
+			margin-right: -2rem;
+			margin-top: -2rem;
+			width: calc(100% + 4rem);
+		}
+
+		@media screen and (min-width: 769px){
+			@media (orientation: landscape) {
+				margin: 0 0 1rem 0;
+				width: 100%;			
+			}
+			@media (orientation: portrait) {
+				width: auto;
+				height: 100%;
+			}
 		}
 	}
 }
@@ -122,8 +140,9 @@ html, body * {
 
 .home_latestarticle_thumbnail {
 	box-sizing: border-box;
+	margin-bottom: 1rem;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 769px) {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -137,26 +156,37 @@ html, body * {
 	}
 
 	& img {
-		@media screen and (min-width: 768px) {
+		display: block;
+
+		@media screen and (min-width: 769px) {
 			background-color: #FFF;
-			position: relative;
+			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
 			width: 100%;
 			margin: 0;
+
+			@media (orientation: portrait) {
+				height: 100%;
+				width: auto;
+			}
 		}
 	}
 
 	&:after {
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 769px) {
 			content: "";
 		    display: block;
 		    position: absolute;
 		    width: 100%;
 		    top: 0;
 		    height: 100%;
-		    background: linear-gradient(rgba(255, 255, 255, .75), transparent);	
+		    @include nav-underlay;
+		}
+
+		@media screen and (min-width: 1400px) {
+			background: none;
 		}
 	}
 }
@@ -164,16 +194,11 @@ html, body * {
 .home_latestarticle_content {
 	position: relative;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 769px) {
 		background: #FFF;
 		padding: 2rem;
 		width: 66.6%;
 		margin-left: 16.65%
-	}
-
-	@media screen and (min-width: 1400px) {
-		position: absolute;
-		bottom: 2rem;
 	}
 }
 
@@ -197,13 +222,58 @@ html, body * {
     top: 0px;
 }
 
+.home_morearticles_wrapper {
+	@extend .home_latestrecipes_wrapper;
+	border-bottom: 1px solid #EEE;
+	overflow: auto;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+body.home .home_morearticles_wrapper .article_content {
+	background: transparent;
+	padding: 0;
+	//max-height: 175px;
+	overflow: hidden;
+	position: relative;
+}
+
+.home_morearticles_wrapper_header {
+	@extend .home_latestrecipes_wrapper_header;
+}
+
+.home_morearticles_morebtn {
+	display: block;
+    max-width: 10rem;
+    margin: 0.5rem auto;
+    text-align: center;
+}
+
+.attachment-post-thumbnail {
+	width: 100%;
+	height: auto;
+	display: block;
+	//border: $cwn_borders;
+}
+
+body.home,
+body.archive,
+body.search {
+
+	.article_content {
+		background: $special-color;
+	    padding: 1rem;
+	    margin-bottom: 1rem;
+	}
+}
+
 // Archive specific layout
 
 body.archive,
 body.search {
 
 	& #container {
-		@media screen and (min-width: 768px) and (max-width: 1399px) {
+		@media screen and (min-width: 769px) and (max-width: 1399px) {
 			margin-top: 6rem;
 			margin-left: -0.75rem;
 			margin-right: -0.75rem;
@@ -237,9 +307,9 @@ body.search {
 
 	& .post,
 	& .page {
-		margin: 0 0 3.5rem 0;
+		margin: 0 0 0 0;
 
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 769px) {
 			width: 33.3%;
 			float: left;
 			box-sizing: border-box;
@@ -248,11 +318,17 @@ body.search {
 		}
 	}
 
-		& .attachment-post-thumbnail {
+	& .post.no-results,
+	& .post.not-found {
+
+		@media screen and (min-width: 769px) {
 			width: 100%;
-			height: auto;
-			//border: $cwn_borders;
+			float: none;
+			box-sizing: border-box;
+			padding: 0 0.75rem;
+			position: relative;
 		}
+	}
 }
 
 /* .thumbnail_category {
@@ -270,8 +346,115 @@ body.search {
 
 #comments {
 	margin: 3rem 0;
-	clear: both;
+	clear: both;	
+	font-size: .8rem;
+	background: lighten($special-color, 2.5%);
+	margin: 0 auto 1rem auto;
+	max-width: 44rem;
+
+	@media screen and (min-width: 1400px) {
+		margin: 0 auto;
+		border-left: 3rem solid #FFF;
+	    border-right: 3rem solid #FFF;
+	}
 }
+
+.post-template-recipe-post #comments{
+	max-width: 100%;
+}
+
+// .comments-title is in typography
+
+
+.comment, .comment-form {
+	padding: 0 1rem 1rem 1rem;
+
+	@media screen and (min-width: 1200px) {
+		padding: 0 2rem 1rem 2rem;
+	}
+}
+
+.comment-author {
+	border-top: 2px solid #FFF;
+	margin-left: -1rem;
+	margin-right: -1rem;
+	padding: .5rem 1rem;
+}
+
+.comment-awaiting-moderation {
+	margin-left: 36px;
+}
+
+.comment-meta {
+	font-size: 0.8rem;
+	margin-bottom: .5rem;
+	margin-left: 36px;
+}
+
+.comment-body p {
+	margin-bottom: 1rem;
+	margin-left: 36px;
+}
+
+.reply a {
+	@extend .button;
+	margin-bottom: 0;
+	margin-left: 36px;
+}
+
+.comment-notes {
+	font-size: 0.8rem;
+	font-style: italic;
+	margin-bottom: 0.33rem;
+}
+
+.comment .children {
+	padding-left: 0;
+	margin-left: 36px;
+	border-left: 2px solid $special-color;
+
+	.comment-author {
+		border-top: none;
+	}
+
+	.comment-meta ,
+	.comment-body p,
+	.reply a,
+	.comment-awaiting-moderation {
+		margin-left: 28px;
+	}
+
+	.comment-awaiting-moderation{
+		display: inline-block;
+	}
+
+	.comment-author.vcard img{
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.comment .children .children {
+	margin-left: 0;
+	border-left: none;
+
+	& .comment {
+		padding: 0;
+	}
+
+	& .comment-meta ,
+	& .comment-body p,
+	& .reply a,
+	& .comment-awaiting-moderation {
+		margin-left: 0;
+	}
+
+	@media screen and (min-width: 769px){
+		margin-left: 28px;
+	}
+}
+
+// Footer
 
 #footer {
 	margin-top: 1rem;
@@ -292,7 +475,7 @@ body.search {
 	background: $special-color;
 	overflow: auto;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 769px) {
 		margin: 0;
 	}
 }
@@ -328,13 +511,26 @@ body.search {
 
 // Page Transitions 
 
+#wrapper {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
 #container {
+
 	opacity: 1;
-	transition: all .3s ease-out;
+	-webkit-transition: all 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	   -moz-transition: all 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	     -o-transition: all 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+	        transition: all 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940); /* easeOutQuad */
 
 	.loading & {
 		opacity: 0;
-		transition: all .3s ease-out;
+		-webkit-transition: all 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+		   -moz-transition: all 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+		     -o-transition: all 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+		        transition: all 600ms cubic-bezier(0.250, 0.460, 0.450, 0.940); /* easeOutQuad */
 	}
 }
 

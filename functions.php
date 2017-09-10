@@ -144,7 +144,7 @@ function recipe_box() {
             ),
         ) );
 
-        $recipe_metabox->add_group_field( $recipe_data, array(
+        /*$recipe_metabox->add_group_field( $recipe_data, array(
             'name'    => esc_html__( 'Cooking Instructions', 'cmb2' ),
             'desc'    => esc_html__( 'Step by step instructions (ideally in a numbered list)', 'cmb2' ),
             'id'      => 'recipe_component_steps',
@@ -155,71 +155,81 @@ function recipe_box() {
                 'media_buttons' => false, // show insert/upload button(s)
                 'teeny'         => true,
             ),
-        ) );
+        ) );*/
+    $instructions_metabox = new_cmb2_box( array(
+        'id'            => 'instructions',
+        'title'         => __( 'Instructions', 'cmb2' ),
+        'object_types'  => array( 'post', ), // Post type
+        'show_on'       => array( 'key' => 'page-template', 'value' => 'recipe-post.php' ),
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => true, // Show field names on the left
+        'repeatable'    => false,
+        // 'cmb_styles' => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ) );
 
- /* Too complicated  
-    // All info for one ingredient item
-    //
-    $recipe_ingredient_data = $ingredients_metabox->add_field( array(
-    'id'          => 'ingredient_data_group',
-    'type'        => 'group',
-    'description' => __( 'List all ingredients for your recipe', 'cmb2' ),
-    // 'repeatable'  => false, // use false if you want non-repeatable group
-    'options'     => array(
-        'group_title'   => __( 'Ingredient {#}', 'cmb2' ), // since version 1.1.4, {#} gets replaced by row number
-        'add_button'    => __( 'Add Another Ingredient', 'cmb2' ),
-        'remove_button' => __( 'Remove Ingredient', 'cmb2' ),
-        'sortable'      => true, // beta
-        // 'closed'     => true, // true to have the groups closed by default
-    ),
-   ) );
-
-           $ingredients_metabox->add_group_field( $recipe_ingredient_data, array(
-            'name' => __( 'Amount', 'theme-domain' ),
-            'desc' => __( 'Number only', 'msft-newscenter' ),
-            'id'   => 'amount',
-            'type' => 'text',
-            'classes' => 'ingred ingred_amount',            
-
-           ) );
-
-           // Id's for group's fields only need to be unique for the group. Prefix is not needed.
-           $ingredients_metabox->add_group_field( $recipe_ingredient_data, array(
-            'name' => 'Unit',
-            'desc' => 'eg. grams, cloves, x, pounds',
-            'id'   => 'unit',
-            'type' => 'text',
-            'classes' => 'ingred ingred_unit',
-            'attributes'  => array(
-                'placeholder' => 'eg. grams, cloves, x...',
-                ),
-            // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-           ) );
-
-           $ingredients_metabox->add_group_field( $recipe_ingredient_data, array(
-            'name' => 'Ingredient',
-            'description' => 'carrots, sugarlumps, porknuckles',
-            'id'   => 'name',
-            'type' => 'text',
-            'classes' => 'ingred ingred_name',
-            'attributes'  => array(
-                'placeholder' => 'eg. Carrots, flour, semen',
-                ),
-           ) );
-
-           $ingredients_metabox->add_group_field( $recipe_ingredient_data, array(
-            'name' => 'Alternatives',
-            'desc' => '(optional) can this be swapped for anything else?',
-            'id'   => 'alternative',
-            'type' => 'text',
-            'classes' => 'ingred ingred_alternative',
-            'attributes'  => array(
-                'placeholder' => 'Can be swapped for...',
-                ),
-            //'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-           ) );
-    */
-
- 
-
+    $instructions_data = $instructions_metabox->add_field( array(
+        'id'          => 'instructions_data',
+        'type'        => 'wysiwyg',
+        'description' => __( 'Fill the cooking instructions', 'cmb2' ),
+        // 'repeatable'  => false, // use false if you want non-repeatable group
+        'options' => array( 
+            'textarea_rows' => 5, 
+            'media_buttons' => false, // show insert/upload button(s)
+            'teeny'         => false,
+        ),
+    ) );
 }
+
+//* Add description to menu items
+add_filter( 'walker_nav_menu_start_el', 'wpstudio_add_description', 10, 2 );
+function wpstudio_add_description( $item_output, $item ) {
+    $description = $item->post_content;
+    if (' ' !== $description ) {
+        return preg_replace( '/(<a.*)</', '$1' . '<span class="menu-description">' . $description . '</span><', $item_output) ;
+    }
+    else {
+        return $item_output;
+    };
+}
+
+//* Add SEO stuff
+
+function doctype_opengraph($output) {
+    return $output . '
+    xmlns:og="http://opengraphprotocol.org/schema/"
+    xmlns:fb="http://www.facebook.com/2008/fbml"';
+}
+add_filter('language_attributes', 'doctype_opengraph');
+
+function fb_opengraph() {
+    global $post;
+ 
+    if(is_single()) {
+        if(has_post_thumbnail($post->ID)) {
+            $img_src = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'medium');
+        } else {
+            $img_src = get_stylesheet_directory_uri() . '/theme_assets/CWN_facebook_cover.png';
+        }
+        if( $excerpt = $post->post_content ) {
+            $excerpt = strip_tags($post->post_content);
+            $excerpt = str_replace("", "'", $excerpt);
+        } else {
+            $excerpt = get_bloginfo('description');
+        }
+        ?>
+ 
+    <meta property="og:title" content="<?php echo the_title(); ?>"/>
+    <meta property="og:description" content="<?php echo $excerpt; ?>"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="<?php echo the_permalink(); ?>"/>
+    <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
+    <meta property="og:image" content="<?php echo $img_src; ?>"/>
+ 
+<?php
+    } else {
+        return;
+    }
+}
+add_action('wp_head', 'fb_opengraph', 5);

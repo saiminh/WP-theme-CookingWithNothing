@@ -33,19 +33,32 @@ i, em {
 }
 
 button,
-input[type="submit"] {
-	font-size: .9rem;
-	background: $bg-color;
+input[type="submit"],
+.button {
+	font-size: .8rem;
+	background: transparent;
 	padding: .75rem 1rem;
 	color: $link-color;
-	border: 1px solid $link-color;
-	font-family: $headline-font;
+	border: 2px solid $link-color;
+	border-radius: 0;
+	font-family: $system-font;
 	cursor: pointer;
 	display: inline-block;
 	overflow: auto;
 	margin-bottom: 1.5rem;
 	text-transform: uppercase;
+	text-decoration: none;
 	-webkit-font-smoothing: auto;
+	line-height: 1;
+
+	@media screen and (min-width: 1024px) {
+		padding: 0.5rem 1rem;
+	}
+
+	&:active {
+		color: #FFF;
+		background: $link-color;
+	}
 }
 
 textarea {
@@ -53,14 +66,16 @@ textarea {
 	background: $bg-color;
 	padding: .5rem;
 	color: $text-color;
-	border: 3px solid $text-color;
+	border: 1px solid $link-color;
+	border-radius: 0;
+	box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 	font-family: $text-font;
 	font-style: italic;
 	cursor: text;
 	display: block;
 	overflow: auto;
 	margin-bottom: 1.5rem;
-	width: 33%;
+	width: 66%;
 	max-width: 45rem;
 	height: 3rem;
 	transition: all .3s ease-out;
@@ -69,8 +84,26 @@ textarea {
 		outline: none;
 		width: 100%;
 		height: 10rem;
-		border-width: 3px;
+		border-color: $text-color;
 	}
+}
+
+input[type="text"] {
+	font-size: 1rem;
+	background: $bg-color;
+	padding: .25rem .5rem;
+	box-sizing: border-box;
+	color: $text-color;
+	border: 1px solid lighten($link-color, 25%);
+	border-radius: 0;
+	box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+	font-family: $text-font;
+	font-style: italic;
+	cursor: text;
+	display: block;
+	width: 100%;
+	max-width: 20rem;
+	margin-bottom: .75rem;
 }
 
 .entry-content {
@@ -107,10 +140,10 @@ textarea {
 
 .entry-title {
 	font-family: $headline-font;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-weight: 300;
 	line-height: 1.33;
-	margin-bottom: 2rem;
+	margin-bottom: 1.5rem;
 	text-transform: uppercase;
     letter-spacing: .05rem;
     text-align: center;
@@ -137,9 +170,10 @@ textarea {
 
 .entry-title_latestrecipes {
 	//@extend .entry-title;
-	font-family: $headline-font;
+	//font-family: $headline-font;
 	line-height: 1.4;
-	font-size: 1.25rem;
+	font-size: 1rem;
+	font-weight: bold;
 	margin-bottom: .75rem;
 	margin-top: .25rem;
 
@@ -148,13 +182,28 @@ textarea {
 	}
 }
 
-.comment-reply-title {
-	@extend .entry-title;
+.comments-title,
+.single .comments-title,
+.page .comments-title {
+	
 	font-size: 1rem;
 	font-weight: bold;
-	padding-top: 1rem;
-	margin-top: 1rem;
-	border-top: 1px solid $special-color;
+	padding: 1rem;
+}
+
+.comment-reply-title,
+.single .comment-reply-title,
+.page .comment-reply-title {
+	color: $link-color;
+	font-size: 1rem;
+	font-weight: bold;
+	padding: 1rem;
+	border-top: 2px solid #FFF;
+
+	@media screen and (min-width: 1200px) {
+	//	padding-left: 2rem;
+	//	padding-top: 2rem;
+	}
 }
 
 body.single-post .article_content,
@@ -173,18 +222,24 @@ body.home .home_latestarticle {
 }
 
 .entry-meta {
-	font-size: 0.8rem;
 	padding-bottom: .25rem;
+	-webkit-column-span: all;
+	-moz-column-span: all;
+	column-span: all;
+	font-style: italic;
+	font-size: 0.8rem;
 
 	.home_latestarticle_content & {
 		text-align: center;
-		font-style: italic;
+		margin-bottom: 0.5rem;
 	}
 }
 
 
 .svg-icon {
 	height: .75rem;
+	position: relative;
+	top: .05rem;
 	* {
 		fill: $text-color;
 	} 

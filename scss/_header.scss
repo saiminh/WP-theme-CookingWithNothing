@@ -3,8 +3,15 @@
 	background: $special-color;
 	margin: -1rem -1rem 1rem -1rem;
     padding: 1rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 
-    @media screen and (min-width: 768px) {
+	@media screen and (min-width: 601px) {
+		margin: -2rem -2rem 2rem -2rem;
+	}
+
+    @media screen and (min-width: 769px) {
     	margin: -2rem -2rem 2rem -2rem;
 	    padding: 2rem;
 	    height: 6rem;
@@ -38,9 +45,9 @@
 	box-sizing: border-box;
 	overflow: hidden;
     position: relative;
-    margin: 0 auto;
+   // margin: 0 auto;
 
-     @media screen and (min-width: 768px) {
+     @media screen and (min-width: 769px) {
      	width: 180px;
 		height: 54px;
 		margin-left: 0;
@@ -53,10 +60,20 @@
 }
 
 #cwn_logo {
-    width: 100%;
-    height: auto;
+    width: 120px;
+    height: 34px;
     position: absolute;
     left: 0;
+
+    @media screen and (min-width: 769px) {
+    	width: 180px;
+    	height: 54px;
+    }
+
+    @media screen and (min-width: 1400px) {
+    	width: 220px;
+    	height: 75px;
+    }
 
     & path, & rect {
     	fill: $link-color;
@@ -70,7 +87,7 @@
 
 .mobile-nav-toggle {
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 769px) {
 		display: none;
 	}
 
@@ -259,7 +276,7 @@
 #menu {
 	position: relative;
 
-	@media screen and (max-width: 767px) {
+	@media screen and (max-width: 768px) {
 		background-color: $special-color;
 	    position: fixed;
 	    top: 3.5rem;
@@ -269,16 +286,16 @@
 	    z-index: 1;
 	    padding: 1rem;
 		transform: translateX(100%);	
-		transition: transform .2s linear;		   
+		transition: transform .1s ease-out;		   
 
 		// When body has menu-active class
 		body.menu-active & {
 			transform: translateX(0);
-			transition: transform .2s linear;
+			transition: transform .1s ease-in;
 		} 
 	}
 
-	@media screen and (min-width: 768px) { 
+	@media screen and (min-width: 769px) { 
 		top: -2.5rem;
 		margin-left: 12rem;
 	}
@@ -294,7 +311,7 @@
 
 #menu-cwn_main_menu {
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 769px) {
 		border-bottom: none;
 		padding-left: 0rem;
 		height: 2.25rem;
@@ -323,7 +340,7 @@
 		border-bottom: 1px solid $link-color;
 		-webkit-font-smoothing: auto;
 
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 769px) {
 			float: left;
 			display: inherit;
 			margin-right: 3px;
@@ -333,6 +350,7 @@
 			padding: .5rem 1rem;
 			border-bottom: 1px solid transparent;
 			transition: .3s border-color ease-in;
+			//text-shadow: 0 2px 8px rgba(255,255,255,1);
 		}
 
 		@media screen and (min-width: 1200px) {
@@ -346,6 +364,7 @@
 			line-height: 1.2rem;
 			border-bottom: 1px solid lighten($link-color, 25%);
 			padding: .5rem 0;
+			text-shadow: none;
 		}
 
 		&:hover {
@@ -357,16 +376,33 @@
 	& .current-menu-item > a,
 	& .current-menu-parent > a{
 
-		@media screen and (min-width: 768px) {
+		@media screen and (min-width: 769px) {
 			border-bottom: 1px solid $link-color;
 		}
 
 		@media screen and (min-width: 1400px) {
 			border-bottom: 1px solid $link-color;
-			top: 0;
-			line-height: 1rem;
-			//height: 2.25rem;
 		}
+	}
+}
+
+.menu-description{
+	display: block;
+	font-family: $text-font;
+	font-style: italic;
+	font-size: .75rem;
+	letter-spacing: 0;
+	text-transform: none;
+	margin-top: .3rem;
+	line-height: 1.2;
+	color: lighten($text-color, 30%);
+
+	@media screen and (min-width: 769px) and (max-width: 1399px) {
+		display: none;
+	}
+
+	@media screen and (min-width: 1400px){
+		//font-size: 0.66rem;
 	}
 }
 
@@ -374,7 +410,7 @@
 	font-size: 1rem;
 	margin-top: 1rem;
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 769px) {
 		position: absolute;
 		bottom: 0px;
 		right: 0;

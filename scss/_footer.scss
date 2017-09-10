@@ -1,0 +1,35 @@
+#footer {
+	background: $link-color;
+	color: #FFF;
+	padding: 2rem;
+
+	& a {
+		color: #FFF;
+		//text-decoration: underline;
+	}
+}
+
+.contact {
+	& a {
+		//font-size: 1rem;
+		font-family: $headline-font;
+		padding: 0.25rem;
+		display: inline-block;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+}
+
+.footer_logo {
+	width: 150px;
+	height: 80px;
+	margin: auto;
+
+	& #cwn_logo {
+		position: relative;
+
+		& * {
+			fill: #FFF;
+		}
+	}
+}

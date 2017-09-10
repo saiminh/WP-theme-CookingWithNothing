@@ -13,9 +13,7 @@
 				<div id="site-title">
 					<?php if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '<h1>'; } ?>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>" rel="home">
-						<?php 
-							$theme_uri = get_template_directory_uri();
-							echo file_get_contents( $theme_uri. "/theme_assets/CWN_logo.svg"); 
+						<?php get_template_part( 'theme_assets/inline', 'CWN_logo.svg' );
 						?>
 					</a>
 					<?php if ( is_front_page() || is_home() || is_front_page() && is_home() ) { echo '</h1>'; } ?></div>

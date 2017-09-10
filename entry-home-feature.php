@@ -17,7 +17,6 @@
 	<h2 class="entry-title">
 		<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a>
 	</h2>
-	<?php get_template_part( 'entry', ( is_archive() || is_search() ? 'summary' : 'content' ) ); ?>
-	<?php get_template_part( 'entry-footer' ); ?>
+	<?php get_template_part( 'entry', 'summary' ); ?>
 </div>
 </article>
