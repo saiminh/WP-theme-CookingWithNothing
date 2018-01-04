@@ -56,10 +56,10 @@ html, body {
   color: #655; }
   @media screen and (min-width: 1200px) {
     html, body {
-      font-size: 20px; } }
+      font-size: 21px; } }
   @media screen and (min-width: 1400px) {
     html, body {
-      font-size: 22px; } }
+      font-size: 24px; } }
 
 p, li {
   -webkit-font-smoothing: antialiased; }
@@ -78,21 +78,21 @@ i, em {
 button,
 input[type="submit"],
 .button,
-.reply a,
 .search_footer a,
-.search_footer a:visited {
+.search_footer a:visited,
+.reply a {
   font-size: .8rem;
-  background: transparent;
+  background: #f8e8e6;
   padding: .75rem 1rem;
   color: #D4776B;
-  border: 2px solid #D4776B;
-  border-radius: 0;
+  border: none;
+  border-radius: 3px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   cursor: pointer;
   display: inline-block;
   overflow: auto;
   margin-bottom: 1.5rem;
-  text-transform: uppercase;
+  text-transform: lowercase;
   text-decoration: none;
   -webkit-font-smoothing: auto;
   line-height: 1; }
@@ -100,41 +100,45 @@ input[type="submit"],
     button,
     input[type="submit"],
     .button,
-    .reply a,
     .search_footer a,
-    .search_footer a:visited {
+    .search_footer a:visited,
+    .reply a {
       padding: 0.5rem 1rem; } }
   button:active,
   input[type="submit"]:active,
   .button:active,
-  .reply a:active,
-  .search_footer a:active {
+  .search_footer a:active,
+  .reply a:active {
     color: #FFF;
     background: #D4776B; }
 
+label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: .7rem;
+  color: #D4776B; }
+
 textarea {
-  font-size: 1rem;
+  font-size: .7rem;
   background: #FFF;
   padding: .5rem;
   color: #655;
-  border: 1px solid #D4776B;
+  background-color: #fdfaf9;
+  border: 1px solid #f1d2ce;
   border-radius: 0;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-family: "Gentium Book Basic", serif;
-  font-style: italic;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   cursor: text;
   display: block;
   overflow: auto;
-  margin-bottom: 1.5rem;
-  width: 66%;
-  max-width: 45rem;
+  margin-bottom: 1rem;
+  width: 100%;
   height: 3rem;
   transition: all .3s ease-out; }
   textarea:focus {
     outline: none;
     width: 100%;
     height: 10rem;
-    border-color: #655; }
+    border-color: #D4776B; }
 
 input[type="text"] {
   font-size: 1rem;
@@ -142,9 +146,10 @@ input[type="text"] {
   padding: .25rem .5rem;
   box-sizing: border-box;
   color: #655;
+  background-color: #fdfaf9;
   border: 1px solid #f1d2ce;
   border-radius: 0;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   font-family: "Gentium Book Basic", serif;
   font-style: italic;
   cursor: text;
@@ -198,21 +203,13 @@ input[type="text"] {
   .entry-title_latestrecipes a {
     text-decoration: none; }
 
+.comment-reply-title,
 .comments-title,
 .single .comments-title,
 .page .comments-title {
+  margin-bottom: .5rem;
   font-size: 1rem;
-  font-weight: bold;
-  padding: 1rem; }
-
-.comment-reply-title,
-.single .comment-reply-title,
-.page .comment-reply-title {
-  color: #D4776B;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 1rem;
-  border-top: 2px solid #FFF; }
+  font-weight: bold; }
 
 body.single-post .article_content p:first-child:first-letter,
 body.page .article_content p:first-child:first-letter,
@@ -227,12 +224,15 @@ body.home .home_latestarticle p:first-child:first-letter {
   margin-left: -2px; }
 
 .entry-meta {
-  padding-bottom: .25rem;
+  padding-bottom: .125rem;
   -webkit-column-span: all;
   -moz-column-span: all;
   column-span: all;
-  font-style: italic;
-  font-size: 0.8rem; }
+  color: #9b8686;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 0.66rem; }
+  .entry-meta a {
+    text-decoration: none; }
   .home_latestarticle_content .entry-meta {
     text-align: center;
     margin-bottom: 0.5rem; }
@@ -426,6 +426,7 @@ body.home .home_morearticles_wrapper .article_content {
   position: relative; }
 
 .home_morearticles_morebtn {
+  clear: both;
   display: block;
   max-width: 10rem;
   margin: 0.5rem auto;
@@ -460,6 +461,11 @@ body.search .header {
 body.archive .ng-row,
 body.search .ng-row {
   clear: left; }
+  @media screen and (min-width: 768px) {
+    body.archive .ng-row,
+    body.search .ng-row {
+      margin-left: -0.75rem;
+      margin-right: -0.75rem; } }
 body.archive .entry-title, body.archive .home_latestrecipes_wrapper_header, body.archive .home_morearticles_wrapper_header,
 body.search .entry-title,
 body.search .home_latestrecipes_wrapper_header,
@@ -504,83 +510,6 @@ body.search .page {
 		border: 3px solid $text-color;
 	}
 } */
-#comments {
-  margin: 3rem 0;
-  clear: both;
-  font-size: .8rem;
-  background: #faf1ef;
-  margin: 0 auto 1rem auto;
-  max-width: 44rem; }
-  @media screen and (min-width: 1400px) {
-    #comments {
-      margin: 0 auto;
-      border-left: 3rem solid #FFF;
-      border-right: 3rem solid #FFF; } }
-
-.post-template-recipe-post #comments {
-  max-width: 100%; }
-
-.comment, .comment-form {
-  padding: 0 1rem 1rem 1rem; }
-  @media screen and (min-width: 1200px) {
-    .comment, .comment-form {
-      padding: 0 2rem 1rem 2rem; } }
-
-.comment-author {
-  border-top: 2px solid #FFF;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  padding: .5rem 1rem; }
-
-.comment-awaiting-moderation {
-  margin-left: 36px; }
-
-.comment-meta {
-  font-size: 0.8rem;
-  margin-bottom: .5rem;
-  margin-left: 36px; }
-
-.comment-body p {
-  margin-bottom: 1rem;
-  margin-left: 36px; }
-
-.reply a {
-  margin-bottom: 0;
-  margin-left: 36px; }
-
-.comment-notes {
-  font-size: 0.8rem;
-  font-style: italic;
-  margin-bottom: 0.33rem; }
-
-.comment .children {
-  padding-left: 0;
-  margin-left: 36px;
-  border-left: 2px solid #f8e8e6; }
-  .comment .children .comment-author {
-    border-top: none; }
-  .comment .children .comment-meta,
-  .comment .children .comment-body p,
-  .comment .children .reply a,
-  .comment .children .comment-awaiting-moderation {
-    margin-left: 28px; }
-  .comment .children .comment-awaiting-moderation {
-    display: inline-block; }
-  .comment .children .comment-author.vcard img {
-    width: 24px;
-    height: 24px; }
-
-.comment .children .children {
-  margin-left: 0;
-  border-left: none; }
-  .comment .children .children .comment {
-    padding: 0; }
-  .comment .children .children .comment-meta, .comment .children .children .comment-body p, .comment .children .children .reply a, .comment .children .children .comment-awaiting-moderation {
-    margin-left: 0; }
-  @media screen and (min-width: 769px) {
-    .comment .children .children {
-      margin-left: 28px; } }
-
 #footer {
   margin-top: 1rem;
   padding-top: 1rem;
@@ -592,33 +521,23 @@ body.search .page {
       margin-left: 14rem; } }
 
 #nav-below {
-  margin: 0 -1rem;
-  background: #f8e8e6;
-  overflow: auto; }
-  @media screen and (min-width: 769px) {
-    #nav-below {
-      margin: 0; } }
+  clear: both; }
 
 .nav-previous > a,
 .nav-next > a {
-  display: block;
-  width: 50%;
+  display: inline-block;
   box-sizing: border-box;
-  padding: 1rem .5rem;
+  padding: .5rem 1rem;
+  border-radius: 3px;
   background: #f8e8e6;
-  font-family: "Julius Sans One", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: 1rem;
   color: #D4776B;
-  float: left;
   text-decoration: none;
   text-align: center; }
   .nav-previous > a .meta-nav,
   .nav-next > a .meta-nav {
-    display: block;
     font-size: 1rem; }
-
-.nav-previous > a {
-  border-right: 1px dashed #FFF; }
 
 #wrapper {
   overflow: hidden;
@@ -979,9 +898,9 @@ body.page #container {
   body.page .article_content {
     width: 100%;
     background: #FFF;
-    margin-top: -60vh;
+    margin-top: -50vh;
     position: relative;
-    padding: 3rem;
+    padding: 3rem 3rem 0 3rem;
     max-width: 44rem;
     margin-left: auto;
     margin-right: auto;
@@ -993,7 +912,7 @@ body.page .home_morearticles_wrapper_header {
   margin-top: 0; }
 body.single-post .entry-meta,
 body.page .entry-meta {
-  font-size: 1rem;
+  font-size: .8rem;
   text-align: center;
   margin-bottom: 0.5rem; }
 
@@ -1046,7 +965,7 @@ body.page .entry-meta {
 
 @media screen and (min-width: 769px) {
   body.post-template-recipe-post .article_content {
-    max-width: 88rem; } }
+    max-width: 52rem; } }
 body.post-template-recipe-post .recipe_thumbnail {
   width: calc(100% + 2rem);
   height: auto;
@@ -1059,20 +978,16 @@ body.post-template-recipe-post .recipe_thumbnail {
 @media screen and (min-width: 769px) {
   body.post-template-recipe-post .entry-content {
     background-color: #FFF;
-    width: calc(50%);
     box-sizing: border-box;
-    float: left;
     padding: 1rem 2rem 0 0;
     position: relative; } }
 @media screen and (min-width: 769px) {
   body.post-template-recipe-post .recipe {
     background-color: #FFF;
-    width: calc(50%);
     box-sizing: border-box;
-    float: left;
-    padding: 1rem 0 0 2rem;
+    padding: 1rem 2rem 0 0;
     position: relative; } }
-@media screen and (min-width: 1800px) {
+@media screen and (min-width: 769px) {
   body.post-template-recipe-post .recipe_components_ingredients_group {
     width: calc(50% - 1rem);
     float: left;
@@ -1087,15 +1002,13 @@ body.post-template-recipe-post .recipe_component_header {
   font-style: italic;
   margin-bottom: .5rem; }
 body.post-template-recipe-post .recipe_component_ingredients {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #DDD; }
+  margin-bottom: 1rem; }
   body.post-template-recipe-post .recipe_component_ingredients ul {
     list-style: square;
     margin: 0 0 .5rem 1rem; }
 body.post-template-recipe-post .recipe_component_steps {
-  margin-bottom: 1rem;
-  color: #D4776B; }
-  @media screen and (min-width: 1800px) {
+  margin-bottom: 1rem; }
+  @media screen and (min-width: 769px) {
     body.post-template-recipe-post .recipe_component_steps {
       width: calc(50% - 1rem);
       float: left;
@@ -1104,6 +1017,8 @@ body.post-template-recipe-post .recipe_component_steps {
     font-style: italic;
     padding: .5rem 0;
     border-bottom: 1px solid #EEE; }
+    body.post-template-recipe-post .recipe_component_steps p:first-of-type {
+      margin-top: -.5rem; }
   body.post-template-recipe-post .recipe_component_steps ol {
     list-style: decimal;
     margin-left: 1rem; }
@@ -1119,6 +1034,7 @@ body.post-template-recipe-post .recipe_component_steps {
   display: block;
   width: 200px;
   outline: none;
+  border: 1px solid #D4776B;
   background: #FFF; }
   .toggle-cookmode:after {
     content: ' on'; }
@@ -1165,9 +1081,6 @@ body.cookmode-on .recipe_component_steps li:hover {
 .entry-footer {
   clear: both;
   padding-top: 1rem; }
-  @media screen and (min-width: 769px) {
-    .entry-footer {
-      padding: 0 3rem; } }
 
 .tag-links {
   display: block;
@@ -1183,7 +1096,8 @@ a[rel="tag"] {
   font-size: .75rem; }
 
 .share-container {
-  padding: 1rem 1rem 0.5rem 1rem; }
+  padding: 0;
+  margin-bottom: 1rem; }
 
 .sharelink {
   display: inline-block;
@@ -1193,7 +1107,7 @@ a[rel="tag"] {
   margin-right: 3px;
   margin-bottom: 0;
   padding: 10px;
-  background: #D4776B;
+  background: #f8e8e6;
   border: none;
   border-radius: 3px;
   text-align: center; }
@@ -1202,7 +1116,7 @@ a[rel="tag"] {
     width: 20px;
     top: 0px; }
     .sharelink .icon .svg-icon > * {
-      fill: #FFF; }
+      fill: #D4776B; }
 
 .sharelink-title {
   overflow: auto;
@@ -1212,21 +1126,11 @@ a[rel="tag"] {
   .sharelink-title .icon .svg-icon > * {
     fill: #D4776B; }
 
-.sharelink--facebook {
-  background-color: #3b5998; }
-
-.sharelink--twitter {
-  background-color: #1DA1F2; }
-
 .tag-title,
 .share-title {
   display: block;
   line-height: 2rem; }
 
-@media screen and (min-width: 769px) {
-  .tag-title,
-  .share-title {
-    display: inline-block; } }
 /** General Search CSS **/
 #search {
   padding: 2px 0; }
@@ -1424,6 +1328,82 @@ ul.search_results .clearfix {
   width: auto;
   z-index: 100000;
   /* Above WP toolbar. */ }
+
+#comments {
+  display: none;
+  margin: 3rem 0;
+  clear: both;
+  font-size: .8rem;
+  margin: 0 auto 1rem auto;
+  max-width: 44rem; }
+  @media screen and (min-width: 768px) {
+    #comments {
+      padding: 0 3rem; } }
+  @media screen and (min-width: 1400px) {
+    #comments {
+      margin: 0 auto; } }
+
+.post-template-recipe-post #comments {
+  max-width: 52rem; }
+
+.comment-author {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding: .5rem 1rem 0 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
+  .comment-author a {
+    text-decoration: none; }
+
+.comment-awaiting-moderation {
+  margin-left: 36px; }
+
+.comment-meta {
+  font-size: 0.7rem;
+  margin-bottom: .5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: #9b8686; }
+  .comment-meta a {
+    text-decoration: none;
+    color: #9b8686; }
+
+.comment-body {
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f8e8e6;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #fdfaf9;
+  padding: 5px 20px;
+  margin-bottom: 20px; }
+
+.comment-body p {
+  margin-bottom: 1rem; }
+
+.reply a {
+  margin-bottom: 0; }
+
+.comment-notes {
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-bottom: 0.33rem; }
+
+.comment .children {
+  padding-left: 20px; }
+  .comment .children .comment-author {
+    border-top: none; }
+  .comment .children .comment-awaiting-moderation {
+    display: inline-block; }
+  .comment .children .comment-author.vcard img {
+    width: 24px;
+    height: 24px; }
+
+.comment .children .children {
+  margin-left: 0;
+  border-left: none; }
+  .comment .children .children .comment {
+    padding: 0; }
+  .comment .children .children .comment-meta, .comment .children .children .comment-body p, .comment .children .children .reply a, .comment .children .children .comment-awaiting-moderation {
+    margin-left: 0; }
 
 #footer {
   background: #D4776B;

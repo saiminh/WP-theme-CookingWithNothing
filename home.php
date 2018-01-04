@@ -62,7 +62,7 @@
 		$home_latestrecipes = "0"; ?>
 <?php endwhile; endif; ?>
 </div>
-<?php get_template_part( 'nav', 'below' ); ?>
+<?php // get_template_part( 'nav', 'below' ); ?>
 
 </section>
 <?php get_sidebar(); ?>

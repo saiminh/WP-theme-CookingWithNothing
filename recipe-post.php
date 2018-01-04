@@ -72,17 +72,20 @@ get_header(); ?>
 					}				
 				?>
 			</div>
+	
+			<?php get_template_part( 'entry-footer' ); ?>
+			<?php get_template_part( 'entry', 'share' ); ?>
+			
 		
 	</div>
 
 
 
 	</article>
-
-	
-	<?php get_template_part( 'entry-footer' ); ?>
 	<?php if ( ! post_password_required() ) comments_template( '', true ); ?>
 	<?php endwhile; endif; ?>
+	
+	
 
 	
 	<footer class="footer">

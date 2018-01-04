@@ -243,6 +243,7 @@ body.home .home_morearticles_wrapper .article_content {
 }
 
 .home_morearticles_morebtn {
+	clear: both;
 	display: block;
     max-width: 10rem;
     margin: 0.5rem auto;
@@ -291,6 +292,11 @@ body.search {
 
 	& .ng-row {
 		clear: left;
+
+		@media screen and (min-width: 768px) {
+			margin-left: -0.75rem;
+			margin-right: -0.75rem;
+		}
 	}
 
 	& .entry-title {
@@ -341,119 +347,6 @@ body.search {
 	}
 } */
 
-
-// Comments
-
-#comments {
-	margin: 3rem 0;
-	clear: both;	
-	font-size: .8rem;
-	background: lighten($special-color, 2.5%);
-	margin: 0 auto 1rem auto;
-	max-width: 44rem;
-
-	@media screen and (min-width: 1400px) {
-		margin: 0 auto;
-		border-left: 3rem solid #FFF;
-	    border-right: 3rem solid #FFF;
-	}
-}
-
-.post-template-recipe-post #comments{
-	max-width: 100%;
-}
-
-// .comments-title is in typography
-
-
-.comment, .comment-form {
-	padding: 0 1rem 1rem 1rem;
-
-	@media screen and (min-width: 1200px) {
-		padding: 0 2rem 1rem 2rem;
-	}
-}
-
-.comment-author {
-	border-top: 2px solid #FFF;
-	margin-left: -1rem;
-	margin-right: -1rem;
-	padding: .5rem 1rem;
-}
-
-.comment-awaiting-moderation {
-	margin-left: 36px;
-}
-
-.comment-meta {
-	font-size: 0.8rem;
-	margin-bottom: .5rem;
-	margin-left: 36px;
-}
-
-.comment-body p {
-	margin-bottom: 1rem;
-	margin-left: 36px;
-}
-
-.reply a {
-	@extend .button;
-	margin-bottom: 0;
-	margin-left: 36px;
-}
-
-.comment-notes {
-	font-size: 0.8rem;
-	font-style: italic;
-	margin-bottom: 0.33rem;
-}
-
-.comment .children {
-	padding-left: 0;
-	margin-left: 36px;
-	border-left: 2px solid $special-color;
-
-	.comment-author {
-		border-top: none;
-	}
-
-	.comment-meta ,
-	.comment-body p,
-	.reply a,
-	.comment-awaiting-moderation {
-		margin-left: 28px;
-	}
-
-	.comment-awaiting-moderation{
-		display: inline-block;
-	}
-
-	.comment-author.vcard img{
-		width: 24px;
-		height: 24px;
-	}
-}
-
-.comment .children .children {
-	margin-left: 0;
-	border-left: none;
-
-	& .comment {
-		padding: 0;
-	}
-
-	& .comment-meta ,
-	& .comment-body p,
-	& .reply a,
-	& .comment-awaiting-moderation {
-		margin-left: 0;
-	}
-
-	@media screen and (min-width: 769px){
-		margin-left: 28px;
-	}
-}
-
 // Footer
 
 #footer {
@@ -471,42 +364,32 @@ body.search {
 // Meta Nav
 
 #nav-below {
-	margin: 0 -1rem;
-	background: $special-color;
-	overflow: auto;
-
-	@media screen and (min-width: 769px) {
-		margin: 0;
-	}
+	clear: both;
 }
 
 .nav-previous,
 .nav-next {
 
 	& > a {
-		display: block;
-		width: 50%;
+		display: inline-block;
 		box-sizing: border-box;
-		padding: 1rem .5rem;
+		padding: .5rem 1rem;
+		border-radius: 3px;
 		background: $special-color;
-		font-family: $headline-font;
+		font-family: $system-font;
 		font-size: 1rem;
 		color: $link-color;
-		float: left;
 		text-decoration: none;
 		text-align: center;
 
-		& .meta-nav {
-			display: block;
+		& .meta-nav {			
 			font-size: 1rem;
 		}
 	}
 }
 
-.nav-previous {
-	& > a {
-		border-right: 1px dashed #FFF;
-	}
+.nav-next {
+
 }
 
 // Page Transitions 

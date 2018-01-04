@@ -1,0 +1,122 @@
+// Comments
+
+#comments {
+
+	display: none; //For the moment
+
+	margin: 3rem 0;
+	clear: both;	
+	font-size: .8rem;
+	margin: 0 auto 1rem auto;
+	max-width: 44rem;
+
+	@media screen and (min-width: 768px) {
+		padding: 0 3rem;
+	}
+
+	@media screen and (min-width: 1400px) {
+		margin: 0 auto;
+	}
+}
+
+.post-template-recipe-post #comments{
+	max-width: 52rem;
+}
+
+// .comments-title is in typography
+
+.comment-author {
+	margin-left: -1rem;
+	margin-right: -1rem;
+	padding: .5rem 1rem 0 1rem;
+	font-family: $system-font;
+
+	& a {
+		text-decoration: none;
+	}
+}
+
+.comment-awaiting-moderation {
+	margin-left: 36px;
+}
+
+.comment-meta {
+	font-size: 0.7rem;
+	margin-bottom: .5rem;
+	font-family: $system-font;
+	color: lighten($text-color, 20%);
+
+	& a {
+		text-decoration: none;
+		color: lighten($text-color, 20%);
+	}
+}
+
+.comment-body {
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid $special-color;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background-color: lighten($special-color, 5%);
+    padding: 5px 20px;
+    margin-bottom: 20px;
+}
+
+.comment-body p {
+	margin-bottom: 1rem;
+}
+
+.reply a {
+	@extend .button;
+	margin-bottom: 0;
+}
+
+.comment-notes {
+	font-size: 0.8rem;
+	font-style: italic;
+	margin-bottom: 0.33rem;
+}
+
+.comment .children {
+	padding-left: 20px;
+
+	.comment-author {
+		border-top: none;
+	}
+
+	.comment-meta ,
+	.comment-body p,
+	.reply a,
+	.comment-awaiting-moderation {
+
+	}
+
+	.comment-awaiting-moderation{
+		display: inline-block;
+	}
+
+	.comment-author.vcard img{
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.comment .children .children {
+	margin-left: 0;
+	border-left: none;
+
+	& .comment {
+		padding: 0;
+	}
+
+	& .comment-meta ,
+	& .comment-body p,
+	& .reply a,
+	& .comment-awaiting-moderation {
+		margin-left: 0;
+	}
+
+	@media screen and (min-width: 769px){
+	}
+}

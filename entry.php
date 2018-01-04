@@ -5,7 +5,9 @@
 			if ( !is_singular() && has_post_thumbnail() ) { 
 				echo '<a href="'; 
 				the_permalink(); 
-				echo '" title="<?php the_title_attribute(); ?>" rel="bookmark">';
+				echo '" title="';
+				the_title_attribute();
+				echo '" rel="bookmark">';
 				the_post_thumbnail(); 
 				echo '</a>';
 			}
@@ -50,8 +52,12 @@
 	<!-- <?php edit_post_link(); ?> -->
 	</header>
 	<?php get_template_part( 'entry', ( is_archive() || is_search() || is_home() ? 'summary' : 'content' ) ); ?>
+
+	<?php
+		if ( is_singular() )
+			get_template_part( 'entry', 'share' );		
+	?>
+
+	<?php if ( !is_search() and is_singular() ) get_template_part( 'entry-footer' ); ?>
 </div>
-
-<?php if ( !is_search() and is_singular() ) get_template_part( 'entry-footer' ); ?>
-
 </article>

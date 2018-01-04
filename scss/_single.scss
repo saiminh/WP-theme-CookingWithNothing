@@ -14,9 +14,9 @@ body.page {
 		@media screen and (min-width: 769px) {			
 			width: 100%;
 		    background: #FFF;
-		    margin-top: -60vh;
+		    margin-top: -50vh;
 		    position: relative;
-		    padding: 3rem;
+		    padding: 3rem 3rem 0 3rem;
 		    max-width: 44rem;
 		    margin-left: auto;
 		    margin-right: auto;
@@ -29,7 +29,7 @@ body.page {
 	}
 
 	.entry-meta {
-		font-size: 1rem;
+		font-size: .8rem;
 		text-align: center;
 		margin-bottom: 0.5rem;
 	}
@@ -89,7 +89,7 @@ body.post-template-recipe-post {
 
 	.article_content {
 		@media screen and (min-width: 769px) {
-			max-width: 88rem;
+			max-width: 52rem;
 		}
 	}
 
@@ -110,10 +110,10 @@ body.post-template-recipe-post {
 	.entry-content {
 		@media screen and (min-width: 769px) {			
 			background-color: #FFF;
-			width: calc(50%);
+			//width: calc(50%);
 			//margin-left: 1rem;
 			box-sizing: border-box;
-			float: left;
+			//float: left;
 			padding: 1rem 2rem 0 0;				
 			position: relative;
 			//color: $link-color;
@@ -125,17 +125,17 @@ body.post-template-recipe-post {
 
 		@media screen and (min-width: 769px) {			
 			background-color: #FFF;
-			width: calc(50%);
+			//width: calc(50%);
 			box-sizing: border-box;
-			float: left;
-			padding: 1rem 0 0 2rem;			
+			//float: left;
+			padding: 1rem 2rem 0 0;			
 			position: relative;
 		}
 	}
 
 	.recipe_components_ingredients_group {
 		
-		@media screen and (min-width: 1800px) {
+		@media screen and (min-width: 769px) {
 			width: calc(50% - 1rem);
 			float: left;
 			margin-right: 1rem;
@@ -157,8 +157,7 @@ body.post-template-recipe-post {
 
 	.recipe_component_ingredients {
 		margin-bottom: 1rem;
-		border-bottom: 1px solid #DDD;		
-
+		
 		ul {
 			list-style: square;
 			margin: 0 0 .5rem 1rem;
@@ -167,9 +166,9 @@ body.post-template-recipe-post {
 
 	.recipe_component_steps {
 		margin-bottom: 1rem;
-		color: $link-color;
+		//color: $link-color;
 
-		@media screen and (min-width: 1800px) {
+		@media screen and (min-width: 769px) {
 			width: calc(50% - 1rem);
 			float: left;
 			margin: 0 0 .5rem 1rem;
@@ -179,6 +178,10 @@ body.post-template-recipe-post {
 			font-style: italic;
 			padding: .5rem 0;
 			border-bottom: 1px solid #EEE;
+
+			&:first-of-type {
+				margin-top: -.5rem;
+			}
 		}
 
 		ol {
@@ -201,6 +204,7 @@ body.post-template-recipe-post {
     display: block;
     width: 200px;
     outline: none;
+    border: 1px solid $link-color;
     background: #FFF;
 
 	&:after {
@@ -269,10 +273,6 @@ body.cookmode-on {
 .entry-footer {
 	clear: both;
 	padding-top: 1rem;
-
-	@media screen and (min-width: 769px) {
-		padding: 0 3rem; 
-	}
 }
 
 .tag-links {
@@ -295,7 +295,8 @@ a[rel="tag"] {
 }
 
 .share-container {
-	padding: 1rem 1rem 0.5rem 1rem;
+	padding: 0;
+	margin-bottom: 1rem;
 }
 
 .sharelink {
@@ -307,7 +308,7 @@ a[rel="tag"] {
 	margin-right: 3px;	
 	margin-bottom: 0;
 	padding: 10px;
-	background: $link-color;
+	background: $special-color;
 	border: none;
 	border-radius: 3px;
 	text-align: center;
@@ -320,7 +321,7 @@ a[rel="tag"] {
 			top:0px;
 
 			& > * {
-				fill: #FFF;			
+				fill: $link-color;			
 			}
 		}
 	}
@@ -337,25 +338,9 @@ a[rel="tag"] {
 	}
 }
 
-.sharelink--facebook {
-	background-color: #3b5998;
-}
-
-.sharelink--twitter {
-	background-color: #1DA1F2;
-}
-
 .tag-title,
 .share-title {
 	display: block;
 	line-height: 2rem;	
-}
-
-@media screen and (min-width: 769px) {
-	.tag-title,
-	.share-title {
-		display: inline-block;
-
-	}
 }
 
