@@ -10,6 +10,7 @@
 		</header>
 		<?php $i = 0; ?>
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+			<?php if (is_search() ) { search_excerpt_highlight(); } ?>
 		<?php
 			if($i == 0) {
 				echo '<div class="ng-row">';

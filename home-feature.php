@@ -20,3 +20,9 @@
 	<?php get_template_part( 'entry', 'summary' ); ?>
 </div>
 </article>
+<!-- <div class="browseby">
+	<h2 class="tag-title">Browse by meal type:</h2>
+	<a href="" rel="tag">Breakfast</a> <a href="" rel="tag">Lunch</a> <a href="" rel="tag">Dinner</a> <a href="" rel="tag">Desert</a>
+	<h2 class="tag-title">Popular topics:</h2>
+	<a href="" rel="tag">Seasonal</a> <a href="" rel="tag">FMT</a> <a href="" rel="tag">Low FODMAP</a> <a href="" rel="tag">Sugar-free</a>
+</div> -->

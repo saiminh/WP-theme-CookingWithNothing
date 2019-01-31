@@ -29,9 +29,9 @@ $system-font: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubu
 
 
 @mixin nav-underlay {
-	background: -moz-linear-gradient(top, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 14%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.8) 14%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.8) 14%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: -moz-linear-gradient(top, rgba(248,232,230,0.9) 0%, rgba(248,232,230,0.8) 14%, rgba(248,232,230,0) 80%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(248,232,230,0.9) 0%,rgba(248,232,230,0.8) 14%,rgba(248,232,230,0) 80%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(248,232,230,0.9) 0%,rgba(248,232,230,0.8) 14%,rgba(248,232,230,0) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */		
 }
 

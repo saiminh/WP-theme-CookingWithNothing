@@ -2,68 +2,78 @@
 <section id="content" role="main">
 
 <!-- Latest Article -->
+
 <?php
-	$catquery = new WP_Query( 'category_name=news&posts_per_page=4' );
+   
+    if ( is_paged() ) {
+        echo '
+            <header class="header">
+                <h1 class="entry-title">Older posts</h1>
+        ';
+        get_template_part( 'nav', 'below' );
+        echo '</header>';
+    }
 
-	// Small function to detect first post
-	function is_first_post()
-	{
-	    static $called = FALSE;
+    // Function to detect first post
+    function is_latest_post() {
+        $latestpost = get_posts ( array(
+            'numberposts' => 1
+        ) );
+        $latestpost = $latestpost[0];
+        $is_latest = ( $latestpost->ID == get_the_ID() ? true : false );
+        return $is_latest;
+    }
 
-	    if ( ! $called )
-	    {
-	        $called = TRUE;
-	        return TRUE;
-	    }
-
-	    return FALSE;
-	}
-
-	$blogpost_counter = 0;
-
-	//Get the post data
-	if ( $catquery->have_posts() ) : while ( $catquery->have_posts() ) : $catquery->the_post(); 
-
-	if ( is_first_post() )
-	{
-	    echo '<div class="home_latestarticle_wrapper">';
-	    get_template_part( 'entry-home-feature' );
-	    echo '</div>'; 
-	    $blogpost_counter++;
-	    // echo $blogpost_counter;
-	}
-	else
-	{		
-		if ( $blogpost_counter == 1 ){
-			echo '<div class="home_morearticles_wrapper">';
-			//echo '<h2 class="home_morearticles_wrapper_header">Earlier blog posts</h2>';
-		}
-	    get_template_part( 'entry-home-more-blog' );
-	    $blogpost_counter++;
-	   	// echo $blogpost_counter;
-	    if ( $blogpost_counter == 4 ){	    	
-	    	$category_id = get_category_by_slug( 'news' );
-	    	echo '<a class="button home_morearticles_morebtn" href="'. get_category_link( $category_id ). '">All blog posts</a>';
-	    	echo '</div>';
-	    }
-	}
+    $column_counter = 0;
 ?>
 
+
+ <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); //Get the post data ?>
+
+    <?php if ( is_latest_post() && !is_paged())
+        {
+            echo '<div class="home_latestarticle_wrapper">';
+            get_template_part( 'home-feature' );
+            echo '</div>'; 
+            $column_counter++;
+        }
+        else
+        {               
+            if ( is_paged() ) { // Check if we're on page number 2
+                if($column_counter == 0) {
+                    echo '<div class="ng-row">';
+                }
+                get_template_part( 'entry' );
+
+                $column_counter++;
+                if($column_counter == 3) {
+                    $column_counter = 0;
+                    echo '</div>';
+                }
+            }
+            else {
+                 // This whole extra code is to create rows for column layouts
+                
+                if($column_counter == 1) {
+                    echo '<div class="ng-row">';
+                }
+                get_template_part( 'entry' );
+
+                $column_counter++;
+                if($column_counter == 4) {
+                    $column_counter = 1;
+                    echo '</div>';
+                }
+            }            
+        }
+    ?>
+
 <?php endwhile; endif; ?>
 
-<!-- Latest Recipes -->
-<div class="home_latestrecipes_wrapper">
-<h2 class="home_latestrecipes_wrapper_header">Latest Recipes</h2>
-<?php
-	$catquery = new WP_Query( 'category_name=cooking&posts_per_page=3' );
-	if ( $catquery->have_posts() ) : while ( $catquery->have_posts() ) : $catquery->the_post(); ?>
-<?php 	$home_latestrecipes = "1";
-		get_template_part( 'entry' );
-		$home_latestrecipes = "0"; ?>
-<?php endwhile; endif; ?>
-</div>
-<?php // get_template_part( 'nav', 'below' ); ?>
-
+<?php get_template_part( 'nav', 'below' ); ?>
 </section>
+
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
+</div>
+

@@ -1,22 +1,42 @@
-#footer {
-	background: $link-color;
-	color: #FFF;
-	padding: 2rem;
+// Footer
 
-	& a {
-		color: #FFF;
-		//text-decoration: underline;
+#footer {
+	border-top: $cwn_borders;
+	font-size: .6rem;
+	text-align: center;
+	padding: 2rem;
+	margin: 2rem -1rem -1rem -1rem;
+
+	@media screen and (min-width: 601px) {
+	    margin: 2rem -1.5rem -2rem -1.5rem;
+	}
+
+	@media screen and (min-width: 1400px) {
+	    margin: 2rem -2rem -2rem -2rem;
 	}
 }
 
 .contact {
+	margin-bottom: .75rem;
+
 	& a {
-		//font-size: 1rem;
-		font-family: $headline-font;
+		font-size: .75rem;
+		font-family: $system-font;
 		padding: 0.25rem;
-		display: inline-block;
+		display: block;
 		text-decoration: none;
-		text-transform: uppercase;
+
+		@media screen and (min-width: 461px) {
+			display: inline-block;
+		}
+	}
+
+	& .footer_divider {
+		display: none;
+
+		@media screen and (min-width: 461px) {
+			display: inline;
+		}
 	}
 }
 

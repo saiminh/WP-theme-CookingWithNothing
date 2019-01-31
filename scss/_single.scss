@@ -1,11 +1,11 @@
-body.single-post,
-body.page {
+#container.single-post,
+#container.page {
 
-	#container {
+	& {
 		padding: 0;
 
 		@media screen and (min-width: 1400px) {
-			padding-left: 2rem;
+			padding-left: 3rem;
 		}
 	}
 
@@ -16,11 +16,19 @@ body.page {
 		    background: #FFF;
 		    margin-top: -50vh;
 		    position: relative;
-		    padding: 3rem 3rem 0 3rem;
-		    max-width: 44rem;
+		    padding: 3rem 5rem 0 5rem;
+		    max-width: 42rem;
 		    margin-left: auto;
 		    margin-right: auto;
 		    overflow: auto;
+		}
+
+		&.no-thumbnail {
+			margin-top: 6rem;
+
+			@media screen and (min-width: 769px) {
+				margin-top: -85vh;
+			}
 		}
 	}
 
@@ -72,6 +80,16 @@ body.page {
 		}
 	}
 
+	&.no-thumbnail {
+		background: #9dbdb6; /* Old browsers */
+		background: -moz-linear-gradient(top, #9dbdb6 48%, #ffffff 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, #9dbdb6 48%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, #9dbdb6 48%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dbdb6', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	}
+
+	
+
 	&:after {
 		@media screen and (min-width: 769px) and (max-width: 1400px) {
 			content: "";
@@ -82,14 +100,15 @@ body.page {
 		    height: 100%;
 		    @include nav-underlay;
 		}
+
 	}
 }
 
-body.post-template-recipe-post {
+#container.post-template-recipe-post {
 
 	.article_content {
 		@media screen and (min-width: 769px) {
-			max-width: 52rem;
+			max-width: 48rem;
 		}
 	}
 
@@ -212,7 +231,7 @@ body.post-template-recipe-post {
 	}
 }
 
-body.cookmode-on {
+#container.cookmode-on {
 
 	.toggle-cookmode {
 		position: fixed;
@@ -232,9 +251,10 @@ body.cookmode-on {
 		left: 0;
 		bottom: 0;
 		right: 0;
-		margin: 0;
+		margin: 0 auto;
 		overflow: scroll;
 		width: 100%;
+		max-width: 1665px;
 		box-sizing: border-box;
 		background: $bg-color;
 		padding: 4rem 2rem 2rem;
@@ -287,16 +307,53 @@ body.cookmode-on {
 a[rel="tag"] {
 	background: $special-color;
 	border-radius: 3px;
-	//color: #FFF;
 	text-decoration: none;
 	padding: 6px 8px; 
 	font-family: $system-font;
 	font-size: .75rem;
+	white-space: nowrap;
+
+	&:before {
+		content: url("data:image/svg+xml; utf8, <svg height='20' fill='#D4776B' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z'></path></svg>");
+		position: relative;
+		top: 5px;
+		left: -4px;
+
+		@media screen and (min-width: 1400px) {
+			top: 4px;
+			left: -2px;
+		}
+	}
 }
 
 .share-container {
 	padding: 0;
 	margin-bottom: 1rem;
+	position: relative;
+
+	& .sharing-tooltip {
+		font-family: $system-font;
+		position: absolute;
+		background-color: $special-color;
+		color: $link-color;
+		font-size: .7rem;
+		padding: .5rem;
+		border-radius: 3px;
+		top: -.5rem;
+		opacity: 0;
+		visibility: hidden;
+
+		&:after {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 0;
+			border: 5px solid transparent;
+		    border-top: 10px solid $special-color;
+		    top: 100%;
+		    left: calc(52% - 5px);
+		}
+	}
 }
 
 .sharelink {
@@ -312,6 +369,8 @@ a[rel="tag"] {
 	border: none;
 	border-radius: 3px;
 	text-align: center;
+	overflow: hidden;
+	vertical-align: top;
 
 	& .icon {
 
@@ -325,6 +384,12 @@ a[rel="tag"] {
 			}
 		}
 	}
+}
+
+#shareurl {
+	font-size: .7rem;
+	font-family: $system-font;
+	padding: .5rem;
 }
 
 .sharelink-title {

@@ -2,6 +2,18 @@
 	<span class="share-title">
 		Share:
 	</span>
+	<input type="text" id="shareurl" value="<?php echo esc_url(get_permalink()); ?>">
+	<button class="button sharelink sharelink--copylink" data-clipboard-target="#shareurl">
+		<span class="icon icon--copylink">
+			<svg class="svg-icon" viewBox="0 0 1280 1280">
+				<polygon class="st0" points="1115.9,234.4 915.6,27.9 915.6,253 1134,253 "/>
+				<path class="st0" d="M896.5,292.5c-10.6,0-19.1-8.8-19.1-19.7V0H386.7v236.7h250l294.8,304.1v463.2H1161V292.5H896.5z"/>
+				<polygon class="st0" points="647.9,304 647.9,529.2 866.2,529.2 "/>
+				<path class="st0" d="M628.8,568.6c-10.6,0-19.1-8.8-19.1-19.7V276.1H119V1280h774.3V568.6H628.8z"/>
+			</svg>
+		</span>
+		<!-- Shareurl -->
+	</button>
 	<a class="button sharelink sharelink--facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo esc_url(get_permalink()); ?>">
 		<span class="icon icon--facebook">
 			<svg class="svg-icon" viewBox="0 0 1280 1280">

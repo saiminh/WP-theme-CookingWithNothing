@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>" />
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class('loading'); ?>>
+<body>
 	<div id="wrapper" class="hfeed">
 		<header id="header" role="banner">
 			<section id="branding">
@@ -31,4 +31,4 @@
 				</div>
 			</nav>
 		</header>
-		<div id="container">
+		<div id="container" <?php body_class("barba-container"); ?>>

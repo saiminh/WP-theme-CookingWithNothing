@@ -85,6 +85,10 @@ function cmb2_override_styles() {
 
 add_action('admin_head', 'cmb2_override_styles');
 
+// ------------------------------------------------
+// Adding the Custom CMB2 Metaboxes
+// ------------------------------------------------
+
 add_action( 'cmb2_admin_init', 'recipe_box' );
 /**
  * Define the metabox and field configurations.
@@ -144,18 +148,6 @@ function recipe_box() {
             ),
         ) );
 
-        /*$recipe_metabox->add_group_field( $recipe_data, array(
-            'name'    => esc_html__( 'Cooking Instructions', 'cmb2' ),
-            'desc'    => esc_html__( 'Step by step instructions (ideally in a numbered list)', 'cmb2' ),
-            'id'      => 'recipe_component_steps',
-            'type'    => 'wysiwyg',
-            'classes' => 'recipe_component_steps',
-            'options' => array( 
-                'textarea_rows' => 5, 
-                'media_buttons' => false, // show insert/upload button(s)
-                'teeny'         => true,
-            ),
-        ) );*/
     $instructions_metabox = new_cmb2_box( array(
         'id'            => 'instructions',
         'title'         => __( 'Instructions', 'cmb2' ),
@@ -182,6 +174,38 @@ function recipe_box() {
     ) );
 }
 
+add_action( 'cmb2_admin_init', 'is_instagram_post' );
+
+function is_instagram_post() {
+
+    // Start with an underscore to hide fields from custom fields list
+    $prefix = '_is_insta_';
+
+    /**
+     * Initiate the metabox
+     */
+    $is_insta_metabox = new_cmb2_box( array(
+        'id'            => 'is_insta',
+        'title'         => __( 'Instagram?', 'cmb2' ),
+        'object_types'  => array( 'post', ), // Post type
+    //    'show_on'       => array( 'key' => 'page-template', 'value' => 'recipe-post.php' ),
+        'context'       => 'normal',
+        'priority'      => 'low',
+        'show_names'    => true, // Show field names on the left
+        'repeatable'    => false,
+        // 'cmb_styles' => false, // false to disable the CMB stylesheet
+        // 'closed'     => true, // Keep the metabox closed by default
+    ) );
+
+    $is_insta_metabox->add_field( array(
+    'name' => 'Is this post linked to from an instagram post?',
+    'desc' => 'Yes, display it on my instagram link page!',
+    'id'   => 'is_insta_checkbox',
+    'type' => 'checkbox',
+) );
+
+}
+
 //* Add description to menu items
 add_filter( 'walker_nav_menu_start_el', 'wpstudio_add_description', 10, 2 );
 function wpstudio_add_description( $item_output, $item ) {
@@ -194,7 +218,49 @@ function wpstudio_add_description( $item_output, $item ) {
     };
 }
 
+// ---------------------------------------------
+// Limiting the homepage with the blog newest article formatting to a certain amount of posts 
+// while limiting page 2 onwards to one less than that
+// ---------------------------------------------
+
+function special_offset_pregp_wpse_105496($qry) {
+  if (is_home() && $qry->is_main_query()) {
+    $ppg = get_option('posts_per_page');
+    $offset = 10;
+    if (!$qry->is_paged()) {
+      $qry->set('posts_per_page',$offset);
+    } else {
+      $qry->set('posts_per_page',$offset-1);
+    }
+  }
+}
+add_action('pre_get_posts','special_offset_pregp_wpse_105496');
+
+// ---------------------------------------------
+// Search Highlighting
+// This highlights search terms in both titles, excerpts and content
+// ---------------------------------------------
+
+function search_excerpt_highlight() {
+ $excerpt = get_the_excerpt();
+ $keys = implode('|', explode(' ', get_search_query()));
+ $excerpt = preg_replace('/(' . $keys .')/iu', '<strong class="search-highlight">\0</strong>', $excerpt);
+
+ echo '<p>' . $excerpt . '</p>';
+}
+
+
+function search_title_highlight() {
+ $title = get_the_title();
+ $keys = implode('|', explode(' ', get_search_query()));
+ $title = preg_replace('/(' . $keys .')/iu', '<strong class="search-highlight">\0</strong>', $title);
+
+ echo $title;
+}
+
+// ---------------------------------------------
 //* Add SEO stuff
+// ---------------------------------------------
 
 function doctype_opengraph($output) {
     return $output . '
@@ -208,12 +274,12 @@ function fb_opengraph() {
  
     if(is_single()) {
         if(has_post_thumbnail($post->ID)) {
-            $img_src = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'medium');
+            $img_src = wp_get_attachment_image_url(get_post_thumbnail_id( $post->ID ), 'full');
         } else {
             $img_src = get_stylesheet_directory_uri() . '/theme_assets/CWN_facebook_cover.png';
         }
-        if( $excerpt = $post->post_content ) {
-            $excerpt = strip_tags($post->post_content);
+        if( $excerpt = $post->post_excerpt ) {
+            $excerpt = strip_tags($post->post_excerpt);
             $excerpt = str_replace("", "'", $excerpt);
         } else {
             $excerpt = get_bloginfo('description');
@@ -233,3 +299,65 @@ function fb_opengraph() {
     }
 }
 add_action('wp_head', 'fb_opengraph', 5);
+?>
+
+<?php
+/**
+ * Extend WordPress search to include custom fields
+ *
+ * https://adambalee.com
+ */
+
+/**
+ * Join posts and postmeta tables
+ *
+ * http://codex.wordpress.org/Plugin_API/Filter_Reference/posts_join
+ */
+function cf_search_join( $join ) {
+    global $wpdb;
+
+    if ( is_search() ) {    
+        $join .=' LEFT JOIN '.$wpdb->postmeta. ' ON '. $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
+        /**
+        This next line is supposed to also add the tags to the search results... this relies on a pplugin called 'Simple taxonomy search' by Ryan Meier 
+        */
+        $join .= "LEFT JOIN {$wpdb->term_relationships} tr ON {$wpdb->posts}.ID = tr.object_id INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN {$wpdb->terms} t ON t.term_id = tt.term_id";
+    }
+
+    return $join;
+}
+add_filter('posts_join', 'cf_search_join' );
+
+/**
+ * Modify the search query with posts_where
+ *
+ * http://codex.wordpress.org/Plugin_API/Filter_Reference/posts_where
+ */
+function cf_search_where( $where ) {
+    global $pagenow, $wpdb;
+
+    if ( is_search() ) {
+        $where = preg_replace(
+            "/\(\s*".$wpdb->posts.".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
+            "(".$wpdb->posts.".post_title LIKE $1) OR (".$wpdb->postmeta.".meta_value LIKE $1)", $where );
+    }
+
+    return $where;
+}
+add_filter( 'posts_where', 'cf_search_where' );
+
+/**
+ * Prevent duplicates
+ *
+ * http://codex.wordpress.org/Plugin_API/Filter_Reference/posts_distinct
+ */
+function cf_search_distinct( $where ) {
+    global $wpdb;
+
+    if ( is_search() ) {
+        return "DISTINCT";
+    }
+
+    return $where;
+}
+add_filter( 'posts_distinct', 'cf_search_distinct' );
