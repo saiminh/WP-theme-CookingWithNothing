@@ -63,7 +63,7 @@
     "handlebars": "^4.1.2",
     "js-yaml": "^3.13.1",
     "load-grunt-tasks": "~0.5.0",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "minimatch": "^3.0.4",
     "qs": "^6.7.0",
     "underscore.string": "^3.3.5"
