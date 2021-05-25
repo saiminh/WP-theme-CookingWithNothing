@@ -284,24 +284,21 @@ function fb_opengraph() {
         } else {
             $excerpt = get_bloginfo('description');
         }
-        ?>
+        
  
-    <meta property="og:title" content="<?php echo the_title(); ?>"/>
-    <meta property="og:description" content="<?php echo $excerpt; ?>"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="<?php echo the_permalink(); ?>"/>
-    <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
-    <meta property="og:image" content="<?php echo $img_src; ?>"/>
+    echo '<meta property="og:title" content="' . the_title() . '"/>';
+    echo '<meta property="og:description" content="'. $excerpt . '"/>';
+    echo '<meta property="og:type" content="article"/>';
+    echo '<meta property="og:url" content="' . the_permalink() . '"/>';
+    echo '<meta property="og:site_name" content="' . get_bloginfo() . '"/>';
+    echo '<meta property="og:image" content="' . $img_src . '"/>';
  
-<?php
     } else {
         return;
     }
 }
 add_action('wp_head', 'fb_opengraph', 5);
-?>
 
-<?php
 /**
  * Extend WordPress search to include custom fields
  *
@@ -318,9 +315,9 @@ function cf_search_join( $join ) {
 
     if ( is_search() ) {    
         $join .=' LEFT JOIN '.$wpdb->postmeta. ' ON '. $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
-        /**
-        This next line is supposed to also add the tags to the search results... this relies on a pplugin called 'Simple taxonomy search' by Ryan Meier 
-        */
+        
+       // This next line is supposed to also add the tags to the search results... this relies on a plugin called 'Simple taxonomy search' by Ryan Meier 
+        
         $join .= "LEFT JOIN {$wpdb->term_relationships} tr ON {$wpdb->posts}.ID = tr.object_id INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN {$wpdb->terms} t ON t.term_id = tt.term_id";
     }
 

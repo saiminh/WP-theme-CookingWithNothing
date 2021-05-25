@@ -76,10 +76,6 @@ b, strong {
 i, em {
   font-style: italic; }
 
-.entry-content_text ul {
-  list-style: square;
-  margin: 0 0 1rem 1rem; }
-
 button,
 input[type="submit"],
 .button,
