@@ -195,6 +195,15 @@ class Test_CMB2_Utils extends Test_CMB2 {
 			'att7'  => 'att7 value',
 			'att10' => 'att10 value',
 		);
+		$data2 = array(
+			'val1' => 1,
+			'val2' => 'two',
+			'val3' => array(
+				'val1' => 1,
+				'val2' => 'two',
+				'val3' => 'two',
+			),
+		);
 
 		$attributes = array(
 			'rendered'  => 'rendered',
@@ -205,6 +214,7 @@ class Test_CMB2_Utils extends Test_CMB2 {
 			'att7'      => 'att7 value',
 			'att10'     => 'att10 value',
 			'data-blah' => function_exists( 'wp_json_encode' ) ? wp_json_encode( $data ) : json_encode( $data ),
+			'data-pizza' => function_exists( 'wp_json_encode' ) ? wp_json_encode( $data2 ) : json_encode( $data2 ),
 		);
 
 		$to_exclude = array(
@@ -213,7 +223,7 @@ class Test_CMB2_Utils extends Test_CMB2 {
 		);
 
 		$this->assertHTMLstringsAreEqual(
-			'value="" att3="att3 value" att10="att10 value" data-blah=\'{"att3":"att3 value","att5":"att5 value","att7":"att7 value","att10":"att10 value"}\'',
+			'value="" att3="att3 value" att10="att10 value" data-blah=\'{"att3":"att3 value","att5":"att5 value","att7":"att7 value","att10":"att10 value"}\' data-pizza=\'{"val1":1,"val2":"two","val3":{"val1":1,"val2":"two","val3":"two"}}\'',
 			CMB2_Utils::concat_attrs( $attributes, $to_exclude )
 		);
 	}
@@ -226,10 +236,7 @@ class Test_CMB2_Utils extends Test_CMB2 {
 		$this->assertEquals( array( 'test' ), CMB2_Utils::ensure_array( 'test' ) );
 		$this->assertEquals( array( 'test' ), CMB2_Utils::ensure_array( array( 'test' ) ) );
 
-		$this->assertEquals( array(
-			'errors' => array(),
-			'error_data' => array(),
-		), CMB2_Utils::ensure_array( new WP_Error ) );
+		$this->assertEquals( array(), CMB2_Utils::ensure_array( new CMB2_Utils ) );
 	}
 
 	public function test_url_set() {
