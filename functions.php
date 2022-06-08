@@ -89,7 +89,7 @@ add_action('admin_head', 'cmb2_override_styles');
 // Adding the Custom CMB2 Metaboxes
 // ------------------------------------------------
 
-add_action( 'cmb2_admin_init', 'recipe_box' );
+add_action( 'cmb2_init', 'recipe_box' );
 /**
  * Define the metabox and field configurations.
  */
@@ -105,6 +105,7 @@ function recipe_box() {
         'id'            => 'recipe',
         'title'         => __( 'Recipe', 'cmb2' ),
         'object_types'  => array( 'post', ), // Post type
+        'show_in_rest'  => true,
         'show_on'       => array( 'key' => 'page-template', 'value' => 'recipe-post.php' ),
         'context'       => 'normal',
         'priority'      => 'high',
@@ -126,27 +127,30 @@ function recipe_box() {
             'sortable'      => true, // beta
             // 'closed'     => true, // true to have the groups closed by default
         ),
+        'show_in_rest'  => true,
     ) );
 
-        $recipe_metabox->add_group_field( $recipe_data, array(
-            'id'            => 'recipe_component_name',
-            'type'          => 'text',
-            'description'   => __( 'Name of the part of the dish' ),
-            'classes'       => 'recipe_component_name',
-        ) );
+    $recipe_metabox->add_group_field( $recipe_data, array(
+        'id'            => 'recipe_component_name',
+        'type'          => 'text',
+        'description'   => __( 'Name of the part of the dish' ),
+        'classes'       => 'recipe_component_name',
+        'show_in_rest'  => true,
+    ) );
 
-        $recipe_metabox->add_group_field( $recipe_data, array(
-            'name'    => esc_html__( 'Ingredients List', 'cmb2' ),
-            'desc'    => esc_html__( 'Put your ingredients in a list', 'cmb2' ),
-            'id'      => 'recipe_component_ingredients',
-            'type'    => 'wysiwyg',
-            'classes' => 'recipe_component_ingredients',
-            'options' => array( 
-                'textarea_rows' => 5, 
-                'media_buttons' => false, // show insert/upload button(s)
-                'teeny'         => true,
-            ),
-        ) );
+    $recipe_metabox->add_group_field( $recipe_data, array(
+        'name'    => esc_html__( 'Ingredients List', 'cmb2' ),
+        'desc'    => esc_html__( 'Put your ingredients in a list', 'cmb2' ),
+        'id'      => 'recipe_component_ingredients',
+        'type'    => 'wysiwyg',
+        'classes' => 'recipe_component_ingredients',
+        'options' => array( 
+            'textarea_rows' => 5, 
+            'media_buttons' => false, // show insert/upload button(s)
+            'teeny'         => true,
+        ),
+        'show_in_rest'  => true,
+    ) );
 
     $instructions_metabox = new_cmb2_box( array(
         'id'            => 'instructions',
@@ -157,6 +161,7 @@ function recipe_box() {
         'priority'      => 'high',
         'show_names'    => true, // Show field names on the left
         'repeatable'    => false,
+        'show_in_rest'  => true,
         // 'cmb_styles' => false, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default
     ) );
@@ -171,10 +176,48 @@ function recipe_box() {
             'media_buttons' => false, // show insert/upload button(s)
             'teeny'         => false,
         ),
+        'show_in_rest'  => true,
     ) );
 }
 
-add_action( 'cmb2_admin_init', 'is_instagram_post' );
+// Make CMB visible in GraphQL
+add_action( 'graphql_register_types', function() {
+  register_graphql_field( 'Post', 'Recipemeta', [
+     'type' => 'String',
+     'description' => __( 'The name of the Recipe', 'wp-graphql' ),
+     'resolve' => function( $post ) {
+        $recipe_array = get_post_meta( $post->ID, 'recipe_component_data_group', true );
+        $recipe_content = '';
+
+        foreach ((array)$recipe_array as $key => $entry) {
+          $recipe_component_name = $recipe_component_ingredients = $recipe_component_steps = '';
+
+          if ( isset( $entry[ 'recipe_component_name' ] ) )
+            $recipe_component_name = esc_html( $entry[ 'recipe_component_name' ] );
+          if ( isset( $entry[ 'recipe_component_ingredients' ] ) )
+            $recipe_component_ingredients = $entry[ 'recipe_component_ingredients' ];
+          if ( isset( $entry[ 'recipe_component_steps' ] ) )
+            $recipe_component_steps = $entry[ 'recipe_component_steps' ];				
+
+          $recipe_content = $recipe_content.'<div class="recipe_component"><div class="recipe_component_ingredients"><h2 class="recipe_component_name">'.$recipe_component_name.'</h2>'.$recipe_component_ingredients.'</div></div>';
+        }
+
+        $cookinstructions = wpautop(get_post_meta( $post->ID, 'instructions_data', true ));
+        if( !empty($cookinstructions)) {
+          $instruction_content = '<div class="recipe_component_steps"><h2 class="recipe_component_name">Instructions</h2>'.$cookinstructions.'</div>';
+        } else {
+          $instruction_content = 'No instructions';
+        }
+       
+        return ! empty( $recipe_array ) ? '<div class="hank">'.$recipe_content.'</div>'.$instruction_content : 'nothing';
+        //$color = get_post_meta( $post->ID, 'recipe_component_ingredients', true );
+        //return ! empty( $color ) ? $color : 'blue';
+     }
+  ] );
+} );
+
+
+add_action( 'cmb2_init', 'is_instagram_post' );
 
 function is_instagram_post() {
 
@@ -193,6 +236,7 @@ function is_instagram_post() {
         'priority'      => 'low',
         'show_names'    => true, // Show field names on the left
         'repeatable'    => false,
+        'show_in_rest' => true,
         // 'cmb_styles' => false, // false to disable the CMB stylesheet
         // 'closed'     => true, // Keep the metabox closed by default
     ) );
@@ -202,9 +246,12 @@ function is_instagram_post() {
     'desc' => 'Yes, display it on my instagram link page!',
     'id'   => 'is_insta_checkbox',
     'type' => 'checkbox',
+    'show_in_rest'  => true,
 ) );
 
 }
+
+
 
 //* Add description to menu items
 add_filter( 'walker_nav_menu_start_el', 'wpstudio_add_description', 10, 2 );
@@ -285,11 +332,10 @@ function fb_opengraph() {
             $excerpt = get_bloginfo('description');
         }
         
- 
-    echo '<meta property="og:title" content="' . the_title() . '"/>';
+    echo '<meta property="og:title" content="' . get_the_title() . '"/>';
     echo '<meta property="og:description" content="'. $excerpt . '"/>';
     echo '<meta property="og:type" content="article"/>';
-    echo '<meta property="og:url" content="' . the_permalink() . '"/>';
+    echo '<meta property="og:url" content="' . get_the_permalink() . '"/>';
     echo '<meta property="og:site_name" content="' . get_bloginfo() . '"/>';
     echo '<meta property="og:image" content="' . $img_src . '"/>';
  
